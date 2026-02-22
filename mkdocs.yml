@@ -1,0 +1,56 @@
+site_name: ArchTect User Guide
+site_description: User documentation for ArchTect (Visual Structurizr DSL Editor)
+# Update this before publishing to GitHub Pages.
+site_url: https://nicobit.github.io/ArchTect/
+repo_url: https://github.com/nicobit/ArchTect
+repo_name: nicobit/ArchTect
+docs_dir: docs
+use_directory_urls: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nicobit/ArchTect/issues
+      name: Report an issue
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo_small.svg
+  favicon: assets/logo_small.svg
+  font:
+    text: IBM Plex Sans
+    code: Fira Code
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+
+extra_css:
+  - styles/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started/index.md
+  - User Guide:
+      - Overview: user-guide/index.md
+      - UI Reference: user-guide/ui-layout.md
+      - View Types: user-guide/view-types.md
+  - Reference:
+      - DSL Support: reference/dsl-support.md
+      - Commands & Troubleshooting: reference/index.md

@@ -1,0 +1,72 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible.
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: ArchTect version
+      description: Found in VS Code → Extensions → ArchTect → version number
+      placeholder: "e.g. 1.2.0"
+    validations:
+      required: true
+
+  - type: input
+    id: vscode-version
+    attributes:
+      label: VS Code version
+      description: Found in Help → About
+      placeholder: "e.g. 1.87.0"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: context
+    attributes:
+      label: Where does the issue occur?
+      options:
+        - VS Code extension
+        - Browser app
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the problem clearly. Include any error messages shown.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open workspace ...
+        2. Click on ...
+        3. See error ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: dsl-snippet
+    attributes:
+      label: Relevant DSL snippet (if applicable)
+      description: Paste the smallest DSL that reproduces the issue.
+      render: text
+    validations:
+      required: false
