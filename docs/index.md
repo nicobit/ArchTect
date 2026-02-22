@@ -53,7 +53,7 @@ hide:
   </div>
   <div class="capability">
     <div class="capability-title">Export</div>
-    Produce shareable PNG and SVG outputs.
+    Produce shareable PNG, SVG, ILOGRAPH exports outputs.
   </div>
   <div class="capability">
     <div class="capability-title">Document</div>
