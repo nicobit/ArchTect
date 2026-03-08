@@ -8,9 +8,8 @@
 ## 🎥 2-Minute Overview
 
 
-<video controls width="800">
-  <source src="https://nicobit.github.io/ArchTect/assets/demo5.mp4" type="video/mp4">
-</video>
+
+[![ArchTect Demo](docs/assets/deployment_environment.png)](https://nicobit.github.io/ArchTect/assets/demo5.mp4)
 
 
 
