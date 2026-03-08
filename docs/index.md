@@ -31,6 +31,12 @@ hide:
 
 <div class="demo">
   <img src="assets/demo2.gif" alt="ArchTect in action — bidirectional canvas and DSL editing inside VS Code" />
+<p>
+  
+  <video autoplay loop muted playsinline width="800">
+  <source src="assets/demo5.mp4" type="video/mp4">
+</video>
+</p>
 </div>
 
 ## Core capabilities
