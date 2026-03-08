@@ -4,6 +4,16 @@
 
 ![ArchTect demo](docs/assets/demo2.gif)
 
+
+## 🎥 2-Minute Overview
+
+
+<video controls width="800">
+  <source src="https://nicobit.github.io/ArchTect/assets/demo5.mp4" type="video/mp4">
+</video>
+
+
+
 ---
 
 ## Documentation
