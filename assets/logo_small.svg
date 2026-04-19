@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+  <!-- container -->
+  
+
+  <!-- scaled + vertically balanced cluster -->
+  <g transform="translate(256,323) scale(1.45) translate(-256,-256)">
+
+    <!-- Top hex -->
+    <g>
+      <polygon fill="#6B7280"
+        points="256,80 316,115 316,185 256,220 196,185 196,115"/>
+      <polygon fill="#8B949E"
+        points="256,80 196,115 196,185 256,150"/>
+      <polygon fill="#4B5563"
+        points="256,150 316,185 256,220 256,150"/>
+    </g>
+
+    <!-- Left hex -->
+    <g>
+      <polygon fill="#6B7280"
+        points="186,200 246,235 246,305 186,340 126,305 126,235"/>
+      <polygon fill="#8B949E"
+        points="186,200 126,235 126,305 186,270"/>
+      <polygon fill="#4B5563"
+        points="186,270 246,305 186,340 186,270"/>
+    </g>
+
+    <!-- Right hex (highlight) -->
+    <g>
+      <polygon fill="#E11D48"
+        points="326,200 386,235 386,305 326,340 266,305 266,235"/>
+      <polygon fill="#FB3B63"
+        points="326,200 266,235 266,305 326,270"/>
+      <polygon fill="#B31233"
+        points="326,270 386,305 326,340 326,270"/>
+    </g>
+
+  </g>
+
+</svg>
