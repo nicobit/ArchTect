@@ -8,25 +8,31 @@ title: Reference & Troubleshooting
 
 ## VS Code Commands
 
-All commands are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
+### Command Palette commands
+
+These commands are available via the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`):
 
 | Command | Description |
 |---|---|
-| `ArchTect: Open Editor` | Open the ArchTect visual editor |
-| `ArchTect: Open Project` | Open a folder or DSL file as a project |
-| `ArchTect: Open with ArchTect` | Open the selected `.dsl` or `.nbc4` file |
 | `ArchTect: New Project` | Scaffold a new workspace in a chosen folder |
-| `ArchTect: Save` | Save the current workspace and layout |
-| `ArchTect: Export PNG` | Export the active view as PNG |
-| `ArchTect: Export SVG` | Export the active view as SVG |
-| `ArchTect: Create View` | Add a new view to the workspace |
-| `ArchTect: Edit Architecture Info` | Edit workspace name and description |
-| `ArchTect: Generate Documentation` | Generate documentation artifacts |
-| `ArchTect: Validate Architecture` | Run DSL validation and report errors |
-| `ArchTect: Toggle Explorer` | Show or hide the left panel |
-| `ArchTect: AI Assistant` | Open the AI assistant |
-| `ArchTect: Show Copilot Diagnostics` | Show Copilot diagnostic info |
+| `ArchTect: Open Generation Center` | Open the documentation generation center |
 | `ArchTect: Open User Guide` | Open this documentation |
+| `ArchTect: Show Copilot Diagnostics` | Show Copilot diagnostic info |
+
+### Entry points
+
+| Action | How |
+|---|---|
+| Open a `.dsl` file visually | Open the file in VS Code → click the **ArchTect icon** in the editor title bar |
+| Open via context menu | Right-click a `.dsl` file in Explorer → **ArchTect: Open with ArchTect** |
+
+### Menu commands (available when editor is open)
+
+| Command | Description |
+|---|---|
+| Export PNG / SVG | Export the active view |
+| Generate Documentation | Generate arc42 documentation from the model |
+| AI Assistant | Open the in-app AI assistant |
 
 ---
 
@@ -35,16 +41,33 @@ All commands are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P
 | File | Purpose |
 |---|---|
 | `workspace.dsl` | Main model file (Structurizr DSL) |
-| `workspace.json` | View layouts and editor state |
 | `.dsl` | Any DSL file openable directly in ArchTect |
 | `.nbc4` | ArchTect diagram file format |
-| `docs/` | Optional folder for documentation or exported artifacts |
+
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
+| `Ctrl+0` | Fit to view |
+| `Ctrl+A` | Select all |
+| `Esc` | Deselect all |
+| `Delete` / `Backspace` | Delete selected |
+| `Shift+click` | Multi-select |
+| `Space` + drag | Pan canvas |
+| Arrow keys | Nudge selected elements |
+| `Shift` + arrow keys | Large nudge |
+| `Ctrl+G` | Group selected elements |
+| `Ctrl+Shift+G` | Ungroup |
+| `Ctrl+D` | Duplicate selected |
+| `Ctrl+]` / `Ctrl+[` | Bring forward / send backward |
 
 ---
 
 ## DSL Grammar
 
-The authoritative grammar used by ArchTect is in `frontend/src/lib/dsl/grammar.txt` inside the extension source. It describes the supported syntax, view types, and configuration options. The canonical language reference for Structurizr DSL is at [structurizr.com/help/dsl](https://structurizr.com/help/dsl).
 
 For what ArchTect specifically supports, see [DSL Support Matrix](dsl-support.md).
 
@@ -55,9 +78,9 @@ For what ArchTect specifically supports, see [DSL Support Matrix](dsl-support.md
 ### Validation errors
 
 If the DSL parser reports errors:
-1. Open the dsl editor and check for error.
+1. Open the DSL editor and check for errors.
 2. Fix the reported line and try again.
-3. For syntax rules, check the [DSL Support Matrix](dsl-support.md) or the [Structurizr DSL](https://docs.structurizr.com/dsl/language) reference
+3. For syntax rules, check the [DSL Support Matrix](dsl-support.md) or the [Structurizr DSL](https://docs.structurizr.com/dsl/language) reference.
 
 ### View not appearing
 
@@ -66,3 +89,9 @@ If a view doesn't show up in the Views panel:
 - Check that the view key is unique across all views.
 - For filtered views: a base view can be hidden once a filtered view is defined for it. This is expected Structurizr-compatible behavior.
 
+### Missing icons in the Palette
+
+If you expect to see cloud service icons (Azure, AWS, etc.) but the Palette only shows elements and shapes:
+- Click the **Themes** button at the bottom of the Palette.
+- Enable the relevant icon theme (e.g., "Azure (remote)", "AWS Icons").
+- Or add a remote theme URL in your DSL `styles` block.

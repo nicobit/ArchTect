@@ -59,7 +59,7 @@ hide:
   </div>
   <div class="capability">
     <div class="capability-title">Export</div>
-    Produce shareable PNG, SVG, ILOGRAPH exports outputs.
+    Produce shareable PNG, SVG, and Ilograph exports.
   </div>
   <div class="capability">
     <div class="capability-title">Document</div>
@@ -90,7 +90,7 @@ hide:
 |---|---|
 | [Getting Started](getting-started/index.md) | Install the extension, first project, UI tour |
 | [User Guide](user-guide/index.md) | UI layout, toolbar, inspector, editing |
-| [UI Reference](user-guide/ui-layout.md) | Canvas, toolbar, inspector in detail |
+| [UI Reference](user-guide/ui-layout.md) | Palette, canvas, toolbar, inspector, themes, layout engines |
 | [View Types](user-guide/view-types.md) | All view types with DSL examples |
 | [DSL Support](reference/dsl-support.md) | What ArchTect supports from the Structurizr DSL |
 | [Reference & Troubleshooting](reference/index.md) | Commands, file types, common issues |
