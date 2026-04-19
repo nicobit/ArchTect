@@ -11,27 +11,18 @@ Choose the path that matches how you use ArchTect.
 ## VS Code Extension
 
 ### Install
-1. Install the extension from the VS Code Marketplace or from a VSIX provided by your team.
+1. Install the extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nicola-bitetti.archtect) or from a VSIX provided by your team.
 2. Reload VS Code if prompted.
 
-### Open the editor
-1. Open the Command Palette and run `ArchTect: Open Editor`.
-2. Or right-click a `.dsl` file and choose `ArchTect: Open with ArchTect`.
+### Open a DSL file
+1. Create or open any `.dsl` file in VS Code.
+2. Click the **ArchTect icon** in the editor title bar to open the visual canvas.
+3. Or right-click the file in the Explorer and choose **ArchTect: Open with ArchTect**.
 
 ### Create a new project
-1. Open the Command Palette and run `ArchTect: New Project`.
+1. Open the Command Palette (`Ctrl+Shift+P`) and run **ArchTect: New Project**.
 2. Choose a parent folder and a project name.
-3. The extension creates:
-   - `workspace.dsl` — your model
-   - `workspace.json` — layout data
-   - `docs/` — empty by default
-
-### Open an existing project
-1. Open the Command Palette and run `ArchTect: Open Project`.
-2. Pick a folder that contains a `.dsl` file, or pick a `.dsl` or `.nbc4` file directly.
-
-### Optional sidebar
-Enable the ArchTect sidebar in the Activity Bar via Settings → `ArchTect: Show Sidebar`.
+3. The extension creates a `workspace.dsl` file with a starter model.
 
 ### Supported file types
 - `.dsl` — Structurizr DSL workspace
@@ -71,10 +62,18 @@ workspace "My Workspace" {
 ```
 
 Then:
-1. Open the file in ArchTect.
-2. Select the System Context view in the Views panel.
-3. Drag nodes to adjust layout (enable manual layout first).
-4. Save to persist layout in `workspace.json`.
+
+1. Open the file in VS Code.
+2. Click the **ArchTect icon** in the editor title bar — the visual canvas opens.
+3. The System Context view appears on the canvas with your elements laid out automatically.
+4. **Add elements visually** — drag element types, shapes, or cloud icons from the **Palette** (left panel) onto the canvas.
+5. **Create relationships** — drag from one element to another on the canvas.
+6. **Edit properties** — click an element and edit its name, description, and technology in the **Inspector** (right panel).
+
+The DSL updates automatically as you make changes on the canvas — and vice versa.
+
+!!! tip "Add cloud icons"
+    Activate icon themes (Azure, AWS, etc.) via the **Themes** button at the bottom of the Palette to get searchable cloud service icon libraries.
 
 ---
 
@@ -84,9 +83,9 @@ ArchTect has four main areas:
 
 | Area | Purpose |
 |---|---|
-| **Left panel** | Switch views, browse the model |
-| **Canvas** | View and interact with the diagram |
+| **Palette** (left panel) | Drag-and-drop elements, shapes, and cloud icons; switch views; theme picker |
+| **Canvas** (center) | View and interact with the diagram |
 | **Inspector** (right panel) | Edit properties of selected element, relationship, or view |
-| **Toolbar** | Layout controls, export, theme, fit-to-screen |
+| **Toolbar** (top) | Export, zoom controls, undo/redo |
 
 For a full breakdown of every control, see [UI Reference](../user-guide/ui-layout.md).

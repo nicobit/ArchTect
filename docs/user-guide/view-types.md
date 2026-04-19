@@ -186,7 +186,10 @@ deployment * "Production" {
 - Use deployment groups if you need to control which relationships are replicated across instances.
 - Keep naming consistent across environments so views are easy to compare.
 
-> Placeholder: Screenshot of a deployment view showing nodes and instances
+!!! tip "Palette adapts for deployment views"
+    When a deployment view is active, the Palette switches to show deployment-specific content: Quick Create (Deployment Environment, Filtered View, Flow), Deployment Nodes, Infrastructure Nodes, and Instances. Cloud icon libraries (Azure, AWS, etc.) remain available for dragging icons onto deployment nodes.
+
+<!-- screenshot: Deployment view showing hub-spoke network topology with Azure icons on nodes -->
 
 ---
 
