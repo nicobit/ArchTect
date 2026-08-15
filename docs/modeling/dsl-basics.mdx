@@ -1,0 +1,145 @@
+---
+title: DSL Basics
+description: Workspace structure, elements, identifiers, relationships, tags, properties, and styles.
+---
+
+ArchTect uses the [Structurizr DSL](https://structurizr.com/help/dsl) as its modeling language. This page covers the fundamental syntax you need to get started.
+
+## Workspace structure
+
+Every model starts with a `workspace` block containing a `model` and `views`:
+
+```dsl
+workspace "My Workspace" "Optional description" {
+  model {
+    // elements and relationships go here
+  }
+
+  views {
+    // view definitions go here
+  }
+}
+```
+
+## Elements and identifiers
+
+See [Elements](/modeling/elements) for the full reference on Person, Software System, Container, Component, and Deployment Node — and how identifiers work.
+
+## Relationships
+
+The `->` operator creates a relationship between two elements:
+
+```dsl
+user -> system "Uses"
+system -> db "Reads from and writes to"
+webapp -> api "Makes API calls to" "HTTPS/JSON"
+```
+
+The format is: `source -> destination "description" "technology"`
+
+You can also define relationships inside an element block using implicit `this`:
+
+```dsl
+softwareSystem "My System" {
+  -> externalSystem "Sends data to"
+}
+```
+
+See [Relationships](/modeling/relationships) for more details.
+
+## Tags, properties, and groups
+
+See [Groups, Tags & Properties](/modeling/groups-tags-properties) for organizing your model and annotating elements with custom metadata.
+
+## Styles
+
+Styles control the visual appearance of elements and relationships based on tags:
+
+```dsl
+views {
+  styles {
+    element "Person" {
+      shape Person
+      background "#08427b"
+      color "#ffffff"
+    }
+    element "Database" {
+      shape Cylinder
+    }
+    relationship "Relationship" {
+      color "#707070"
+      thickness 2
+    }
+  }
+}
+```
+
+## Directives
+
+### `!identifiers`
+
+Controls how identifiers are scoped:
+
+```dsl
+workspace {
+  !identifiers hierarchical
+  model { ... }
+}
+```
+
+### Themes
+
+Apply external themes for consistent styling:
+
+```dsl
+views {
+  theme default
+  themes https://static.structurizr.com/themes/amazon-web-services-2023.01.31/theme.json
+}
+```
+
+## Complete example
+
+```dsl
+workspace "E-Commerce" "Online store architecture" {
+  model {
+    customer = person "Customer" "Shops online"
+
+    ecommerce = softwareSystem "E-Commerce Platform" {
+      webapp = container "Web App" "Customer-facing UI" "React"
+      api = container "API" "Business logic" "Node.js"
+      db = container "Database" "Product and order data" "PostgreSQL"
+
+      webapp -> api "Calls" "HTTPS"
+      api -> db "Reads/writes" "SQL"
+    }
+
+    customer -> webapp "Browses and purchases" "HTTPS"
+  }
+
+  views {
+    systemContext ecommerce "Context" {
+      include *
+      autoLayout
+    }
+    container ecommerce "Containers" {
+      include *
+      autoLayout
+    }
+    styles {
+      element "Person" {
+        shape Person
+      }
+    }
+  }
+}
+```
+
+## See also
+
+- [Elements](/modeling/elements) — Person, Software System, Container, Component, Deployment Node
+- [Relationships](/modeling/relationships) — Defining and styling connections
+- [Groups, Tags & Properties](/modeling/groups-tags-properties) — Organizing and annotating your model
+- [Views](/modeling/views) — View types, scoping, and include/exclude
+- [DSL Support Matrix](/reference/dsl-support) — What ArchTect supports from the full Structurizr DSL
+- [DSL Reference](/reference/dsl-reference) — Detailed syntax reference

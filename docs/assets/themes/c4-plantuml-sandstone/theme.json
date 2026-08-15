@@ -1,0 +1,35 @@
+{
+  "name": "C4 Sandstone",
+  "description": "Port of the C4_sandstone PlantUML theme. Based on the Sandstone Bootswatch theme: steel-blue systems, sky-blue persons, warm-orange containers, sandy grays.",
+  "elements": [
+    { "tag": "Person",             "shape": "Person",      "background": "#29abe0", "color": "#FFFFFF", "stroke": "#259aca", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",    "shape": "Person",      "background": "#f8f5f0", "color": "#259aca", "stroke": "#259aca", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+    { "tag": "Software System",    "shape": "Box",         "background": "#3e3f3a", "color": "#FFFFFF", "stroke": "#383934", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                                    "background": "#f8f5f0", "color": "#383934", "stroke": "#383934", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+    { "tag": "Container",          "shape": "RoundedBox",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application",        "shape": "RoundedBox",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "WebApp",             "shape": "WebBrowser",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "MobileApp",          "shape": "MobileDevicePortrait", "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Api",                "shape": "Hexagon",     "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Worker",             "shape": "RoundedBox",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Database",           "shape": "Cylinder",    "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Cache",              "shape": "RoundedBox",  "background": "#f8f5f0", "color": "#383934", "stroke": "#807e77", "strokeWidth": 2 },
+    { "tag": "MessageBroker",      "shape": "Pipe",        "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Storage",            "shape": "Folder",      "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Web Browser",        "shape": "WebBrowser",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Mobile App",         "shape": "MobileDeviceLandscape", "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Component",          "shape": "RoundedBox",  "background": "#325d88", "color": "#FFFFFF", "stroke": "#2d547a", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",               "shape": "RoundedBox",  "background": "#325d88", "color": "#FFFFFF", "stroke": "#2d547a", "strokeWidth": 2 },
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#f8f5f0", "color": "#3e3f3a", "stroke": "#807e77", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",    "shape": "RoundedBox",  "background": "#8e8c84", "color": "#f8f5f0", "stroke": "#807e77", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node","shape": "RoundedBox",  "background": "#8e8c84", "color": "#f8f5f0", "stroke": "#807e77", "strokeWidth": 1 },
+    { "tag": "Software System Instance", "shape": "Box",   "background": "#3e3f3a", "color": "#FFFFFF", "stroke": "#383934", "strokeWidth": 2 },
+    { "tag": "Container Instance", "shape": "RoundedBox",  "background": "#f47c3c", "color": "#FFFFFF", "stroke": "#dc7036", "strokeWidth": 2 },
+    { "tag": "Robot",   "shape": "Robot",   "background": "#29abe0", "color": "#FFFFFF", "stroke": "#259aca", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#3e3f3a", "color": "#FFFFFF", "stroke": "#383934", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#3e3f3a", "color": "#FFFFFF", "stroke": "#383934", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#476d94", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Monochrome",
+  "description": "Grayscale palette for PDFs, architectural decision documents, and printing. Elements are distinguished by line style and shape/icon rather than color: External uses a dashed border, Database keeps its cylinder shape, Queue keeps its pipe shape, Person keeps its person shape. Same semantic role -> gray-scale mapping as the other curated palettes, with hue removed.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person", "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",  "shape": "Person", "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Software System", "shape": "Box", "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                        "background": "#E4E4E7", "color": "#3F3F46", "stroke": "#71717A", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Container",   "shape": "RoundedBox", "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application", "shape": "RoundedBox", "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "WebApp",      "shape": "WebBrowser",           "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "MobileApp",   "shape": "MobileDevicePortrait", "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Api",         "shape": "Hexagon",              "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Worker",      "shape": "RoundedBox",           "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Database",    "shape": "Cylinder",             "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Cache",       "shape": "RoundedBox",           "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "MessageBroker", "shape": "Pipe",               "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Storage",     "shape": "Folder",               "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Web Browser", "shape": "WebBrowser",           "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+    { "tag": "Mobile App",  "shape": "MobileDeviceLandscape", "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+
+    { "tag": "Component", "shape": "RoundedBox", "background": "#F4F4F5", "color": "#3F3F46", "stroke": "#A1A1AA", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",      "shape": "RoundedBox", "background": "#F4F4F5", "color": "#3F3F46", "stroke": "#A1A1AA", "strokeWidth": 2 },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#FAFAFA", "color": "#52525B", "stroke": "#A1A1AA", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox", "background": "#FAFAFA", "color": "#52525B", "stroke": "#A1A1AA", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox", "background": "#FAFAFA", "color": "#52525B", "stroke": "#A1A1AA", "strokeWidth": 1 },
+
+    { "tag": "Software System Instance", "shape": "Box",        "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2 },
+    { "tag": "Container Instance",       "shape": "RoundedBox", "background": "#D4D4D8", "color": "#27272A", "stroke": "#71717A", "strokeWidth": 2 },
+
+    { "tag": "Robot",   "shape": "Robot",   "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#3F3F46", "color": "#FFFFFF", "stroke": "#18181B", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#52525B", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

@@ -1,0 +1,60 @@
+---
+title: VS Code Webview Issues
+description: Fixing blank editors, 403 errors, and CSP issues in the VS Code extension.
+---
+
+If the ArchTect editor opens blank or shows errors in the VS Code Extension Development Host, the most common cause is a missing or outdated frontend bundle. See [Webview Architecture](/vscode-extension/webview) for how the extension hosts the portal.
+
+## Quick fix: Rebuild the bundle
+
+The extension serves built frontend assets from `extension/media`. If these files are missing or outdated, the webview will be blank.
+
+**Option 1 — VS Code task (recommended):**
+
+- Command Palette → `Tasks: Run Task` → choose **build: extension bundle**
+
+**Option 2 — PowerShell script:**
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-extension.ps1
+```
+
+**Option 3 — Manual steps:**
+
+```bash
+cd frontend
+npm ci
+npm run build
+cd ../extension
+rm -rf media/*
+cp -r ../frontend/dist/* media/
+npm run compile
+```
+
+After rebuilding, press `F5` to restart the Extension Development Host.
+
+## Other common issues
+
+### 403 errors or blank white screen
+
+This usually means the webview resource URIs are incorrect. Check:
+
+1. Open Webview Developer Tools (Command Palette → `Developer: Open Webview Developer Tools`).
+2. Look for 403 or 404 errors in the console.
+3. Verify that `extension/media/` contains the built frontend files.
+
+### CSP (Content Security Policy) errors
+
+If you see CSP-related errors in the webview console, the extension's CSP header may not include the necessary sources. This is typically a development-time issue that resolves after a clean rebuild.
+
+### Debugging tips
+
+Paste these in the Webview Developer Tools console to check the environment:
+
+```js
+location.href
+document.querySelector('base')?.href
+window.__ARCHTECT_VSCODE_MEDIA_BASE__
+```
+
+If Copilot or language model issues occur, run `ArchTect: Show Copilot Diagnostics` from the Command Palette to capture environment state.

@@ -1,0 +1,40 @@
+---
+title: MCP Server Integration
+description: ArchTect's embedded Model Context Protocol server and how to connect AI clients to it.
+---
+
+The VS Code extension embeds a [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server, enabled by default. It exposes your open ArchTect workspace as tools that any MCP-aware AI client — Claude Code, the `@archtect` Copilot participant, or other MCP clients — can call directly, rather than only reasoning from a pasted DSL snippet.
+
+## Enabling and configuring
+
+| Setting | Default | Description |
+|---|---|---|
+| `archtect.mcp.enabled` | `true` | Enable the embedded MCP server |
+| `archtect.mcp.transport` | `sse` | `stdio` or `sse` — in extension host mode, `stdio` falls back to SSE on localhost |
+| `archtect.mcp.port` | `33335` | Preferred localhost port when transport is SSE |
+| `archtect.mcp.diagramsDir` | `docs/diagrams` | Default diagrams directory for the `doc.insertDiagram` link-file strategy |
+
+Set these in VS Code's Settings (search for `archtect.mcp`) or your workspace `settings.json`.
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `ArchTect: MCP Toggle Server` | Start or stop the embedded MCP server |
+| `ArchTect: MCP Show Status` | Show MCP server status |
+| `ArchTect: MCP Configure Client` | Configure MCP client integration for the workspace |
+| `ArchTect: MCP Configure Claude Code` | Configure MCP for Claude Code |
+
+## Connecting Claude Code
+
+Run `ArchTect: MCP Configure Claude Code` from the Command Palette. This writes the MCP server connection details into your Claude Code configuration so it can call ArchTect's tools directly against your open workspace.
+
+## What the server exposes
+
+The `@archtect` Copilot chat participant's `/tools` subcommand lists the MCP tools available for the current session — see [Copilot Chat Participant](/vscode-extension/copilot). The same tool set is available to any other MCP client you configure.
+
+## See also
+
+- [Commands](/vscode-extension/commands)
+- [Copilot Chat Participant](/vscode-extension/copilot)
+- [MCP Diagnostics](/troubleshooting/mcp)

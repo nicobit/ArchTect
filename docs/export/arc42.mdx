@@ -1,0 +1,101 @@
+---
+title: arc42 Documentation Generation
+description: Generate structured architecture documentation following the arc42 template.
+---
+
+ArchTect can generate complete architecture documentation from your model, following the [arc42](https://arc42.org/) template — a widely-used standard for software architecture documentation.
+
+## What is arc42?
+
+arc42 provides a standardized structure for architecture documentation with sections covering:
+
+1. Introduction and Goals
+2. Architecture Constraints
+3. Context & Scope
+4. Solution Strategy
+5. Building Block View
+6. Runtime View
+7. Deployment View
+8. Cross-cutting Concepts
+9. Architecture Decisions
+10. Quality Requirements
+11. Risks and Technical Debt
+12. Glossary
+
+## How to generate
+
+### VS Code extension
+
+1. Open your project in ArchTect.
+2. Command Palette → `ArchTect: Generate Documentation`.
+3. Generated Markdown files are saved to the output folder.
+
+### Browser app
+
+1. Open the **Architecture** menu in the top bar.
+2. Select **Generate Documentation**.
+3. Download the generated files.
+
+## View-to-section mapping
+
+ArchTect automatically places your views into the correct arc42 sections:
+
+| arc42 section | Mapped view types |
+|---|---|
+| **3. Context & Scope** | System Landscape, System Context |
+| **5. Building Block View** | Container, Component |
+| **6. Runtime View** | Dynamic |
+| **7. Deployment View** | Deployment |
+
+<Note>
+**Unassigned views**
+
+Filtered and Custom views are not automatically mapped to arc42 sections. They are included as appendices or listed separately.
+</Note>
+
+## AI-assisted content
+
+When AI assistance is enabled, ArchTect enhances the generated documentation with:
+
+- **Section introductions** — Prose descriptions for each arc42 section based on your model.
+- **Element descriptions** — Summaries of each element's role and purpose.
+- **Relationship narratives** — Descriptions of how components interact.
+- **Gap detection** — Highlights sections that lack views or content.
+
+<Warning>
+**Review AI-generated content**
+
+AI-generated text is a starting point. Always review and refine the output for accuracy and completeness before publishing.
+</Warning>
+
+## Output contents
+
+Each generated section includes:
+
+| Content | Description |
+|---|---|
+| **Diagrams** | Embedded PNG or SVG exports of relevant views |
+| **Element tables** | Name, description, technology for all elements in scope |
+| **Relationship tables** | Source, destination, description, technology |
+| **View metadata** | View title, description, and key |
+| **Section prose** | AI-generated descriptions (when enabled) |
+
+## Tips
+
+<Tip>
+**Complete your model first**
+
+The quality of generated documentation depends on the completeness of your model. Add descriptions, technologies, and tags to elements and relationships before generating docs.
+</Tip>
+
+<Tip>
+**Use multiple view types**
+
+arc42 sections map to specific view types. For comprehensive documentation, create at least a System Context, Container, Dynamic, and Deployment view.
+</Tip>
+
+## See also
+
+- [Documentation Map](/export/documentation-map) — How view types map to arc42 sections
+- [View Types](/modeling/views) — Understanding which views map to which sections
+- [Export overview](/export) — All export formats

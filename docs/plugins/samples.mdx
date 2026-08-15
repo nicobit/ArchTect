@@ -1,0 +1,29 @@
+---
+title: Built-in Sample Plugins
+description: The Metrics Plugin and Chart Visualizer plugins shipped with ArchTect as working examples.
+---
+
+ArchTect ships two example plugins, both disabled by default. They exist to demonstrate the plugin API, not as recommended everyday tools — enable them from the [Plugins panel](/plugins) if you want to see it in action.
+
+## Metrics Plugin
+
+Shows diagram statistics — element and relationship counts and similar metrics — in its own panel. Demonstrates:
+
+- Panel registration with custom UI
+- A command with a keyboard shortcut
+- A read-only inspector that reacts to the current selection
+- Context subscriptions for reactive updates
+- Scoped, plugin-local storage and logging
+
+## Chart Visualizer
+
+A more complete example covering the full plugin surface: panel registration, inspector integration, command creation, menu items, context management, and cleanup handling on deactivation.
+
+## Using these as a starting point
+
+If you're building your own plugin, these two are the reference implementations — read their source for a working example of every extension point (panels, inspectors, commands, menus, context, storage, logging) rather than assembling one from documentation alone.
+
+## See also
+
+- [Plugins](/plugins)
+- [Installing Plugins](/plugins/installing)

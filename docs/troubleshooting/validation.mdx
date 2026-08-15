@@ -1,0 +1,34 @@
+---
+title: Validation Errors
+description: Diagnosing and fixing DSL parser and validation errors.
+---
+
+If the DSL parser reports errors, follow these steps to diagnose and fix them.
+
+## Common validation errors
+
+| Error | Cause | Fix |
+|---|---|---|
+| Unexpected token | Typo or missing brace/quote | Check the reported line for syntax issues |
+| Unknown identifier | Referencing an element that isn't defined | Ensure the element is defined with `=` before use |
+| Duplicate key | Two views or elements share the same key | Rename one to be unique |
+| Missing required block | `model` or `views` block is absent | Add the missing block to your workspace |
+
+## How to validate
+
+**VS Code extension:**
+
+1. Open the Command Palette → `ArchTect: Validate Architecture`.
+2. The editor highlights errors inline with line numbers.
+3. Fix the reported issues and re-validate.
+
+**Browser app:**
+
+- Validation errors appear in the editor diagnostics panel automatically when you edit the DSL.
+
+## Tips
+
+- **Start simple** — If you have many errors, comment out sections with `//` and fix one at a time.
+- **Check braces** — Most parse errors come from unmatched `{` `}` braces. Count them carefully.
+- **Quote strings** — Element names and descriptions must be quoted with `"double quotes"`.
+- **Check the DSL reference** — For syntax rules, see the [DSL Support Matrix](/reference/dsl-support) or the [Structurizr DSL reference](https://structurizr.com/help/dsl).

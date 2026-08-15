@@ -1,0 +1,42 @@
+---
+title: Building the Extension
+description: Producing a rebuilt extension bundle or a packaged .vsix.
+---
+
+## Quick rebuild (recommended)
+
+From the repo root:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-extension.ps1
+```
+
+This rebuilds the frontend, refreshes `extension/media/` with the new bundle, and compiles the extension — the same fix used for [blank webview issues](/troubleshooting/webview). Optional flags: `-CleanMedia` (default on) wipes `extension/media/` before copying; `-CleanNodeModules` forces a clean `node_modules` reinstall.
+
+## Manual steps
+
+```bash
+cd extension
+npm run compile
+```
+
+`compile` runs three steps in order: `build:webview` (builds `frontend/` with `vite.config_extension.ts` and copies the output into `extension/media/`), `prepare:native-scanner`, then `tsc -p ./tsconfig.json`.
+
+## Packaging a .vsix
+
+```bash
+cd extension
+npm run package
+```
+
+Runs `compile` then `vsce package --no-dependencies`, producing a `.vsix` file in `extension/`.
+
+## After rebuilding
+
+Press `F5` in VS Code to restart the Extension Development Host with the new bundle, or reinstall the `.vsix` if you're testing a packaged build.
+
+## See also
+
+- [Webview Architecture](/vscode-extension/webview)
+- [VS Code Webview Issues](/troubleshooting/webview)
+- [Repository Layout](/contributing/repo-layout)

@@ -1,0 +1,41 @@
+{
+  "name": "Color-blind Safe",
+  "description": "Accessible palette using the Okabe-Ito color-blind-safe set, suitable for broad organizational use. Relies on lightness/contrast differences in addition to hue, not on green-vs-red distinctions alone. Same semantic role -> color mapping as the other curated palettes.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person", "background": "#E8E8E8", "color": "#222222", "stroke": "#666666", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",  "shape": "Person", "background": "#E8E8E8", "color": "#222222", "stroke": "#666666", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Software System", "shape": "Box", "background": "#0072B2", "color": "#FFFFFF", "stroke": "#004F7C", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                        "background": "#B8B8B8", "color": "#222222", "stroke": "#707070", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Container",   "shape": "RoundedBox", "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application", "shape": "RoundedBox", "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "WebApp",      "shape": "WebBrowser",           "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "MobileApp",   "shape": "MobileDevicePortrait", "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "Api",         "shape": "Hexagon",              "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "Worker",      "shape": "RoundedBox",           "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "Database",    "shape": "Cylinder",             "background": "#009E73", "color": "#FFFFFF", "stroke": "#006B4F", "strokeWidth": 2 },
+    { "tag": "Cache",       "shape": "RoundedBox",           "background": "#009E73", "color": "#FFFFFF", "stroke": "#006B4F", "strokeWidth": 2 },
+    { "tag": "MessageBroker", "shape": "Pipe",               "background": "#CC79A7", "color": "#FFFFFF", "stroke": "#8E4E73", "strokeWidth": 2 },
+    { "tag": "Storage",     "shape": "Folder",               "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "Web Browser", "shape": "WebBrowser",           "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+    { "tag": "Mobile App",  "shape": "MobileDeviceLandscape", "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+
+    { "tag": "Component", "shape": "RoundedBox", "background": "#E6F2F7", "color": "#173541", "stroke": "#5994AC", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",      "shape": "RoundedBox", "background": "#E6F2F7", "color": "#173541", "stroke": "#5994AC", "strokeWidth": 2 },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#FAFAFA", "color": "#444444", "stroke": "#999999", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox", "background": "#FAFAFA", "color": "#444444", "stroke": "#999999", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox", "background": "#FAFAFA", "color": "#444444", "stroke": "#999999", "strokeWidth": 1 },
+
+    { "tag": "Software System Instance", "shape": "Box",        "background": "#0072B2", "color": "#FFFFFF", "stroke": "#004F7C", "strokeWidth": 2 },
+    { "tag": "Container Instance",       "shape": "RoundedBox", "background": "#56B4E9", "color": "#102A35", "stroke": "#187BA8", "strokeWidth": 2 },
+
+    { "tag": "Robot",   "shape": "Robot",   "background": "#E8E8E8", "color": "#222222", "stroke": "#666666", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#0072B2", "color": "#FFFFFF", "stroke": "#004F7C", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#0072B2", "color": "#FFFFFF", "stroke": "#004F7C", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#555555", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

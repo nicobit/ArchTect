@@ -1,0 +1,77 @@
+---
+title: Elements
+description: Person, Software System, Container, Component, and Deployment Node — the core element types.
+---
+
+Structurizr DSL models are built from a small set of element types, each with a different level of scope.
+
+## Person
+
+Represents a human user or role:
+
+```dsl
+user = person "End User" "A person who uses the system"
+```
+
+## Software System
+
+A top-level software system — the coarsest unit of scope:
+
+```dsl
+system = softwareSystem "My System" "Handles business logic"
+```
+
+## Container
+
+A deployable unit within a software system (an API, database, web app, and so on):
+
+```dsl
+system = softwareSystem "My System" {
+  webapp = container "Web App" "Serves the UI" "React"
+  api = container "API" "REST API" "Node.js"
+  db = container "Database" "Stores data" "PostgreSQL"
+}
+```
+
+## Component
+
+A structural building block within a container:
+
+```dsl
+api = container "API" {
+  authController = component "Auth Controller" "Handles authentication" "Express.js"
+  userService = component "User Service" "Manages users" "TypeScript"
+}
+```
+
+## Deployment Node
+
+An infrastructure host or environment — see [Deployment Views](/modeling/deployment-views) for the full deployment model.
+
+```dsl
+deploymentEnvironment "Production" {
+  deploymentNode "Azure" "Cloud provider" {
+    deploymentNode "App Service" {
+      containerInstance webapp
+    }
+  }
+}
+```
+
+## Identifiers
+
+Use identifiers to reference elements in relationships and views:
+
+```dsl
+user = person "User"
+api = container "API"
+user -> api "Calls"
+```
+
+An identifier is required whenever you need to reference an element elsewhere — in relationships, views, or deployment.
+
+## See also
+
+- [DSL Basics](/modeling/dsl-basics) — Workspace structure and fundamental syntax
+- [Relationships](/modeling/relationships) — Connecting elements
+- [Groups, Tags & Properties](/modeling/groups-tags-properties) — Organizing and annotating elements

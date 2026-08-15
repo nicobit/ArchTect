@@ -1,0 +1,133 @@
+{
+  "name": "Mono",
+  "description": "Restrained executive-style theme with neutral greys and subtle accenting",
+  "elements": [
+    {
+      "tag": "Element",
+      "shape": "RoundedBox",
+      "background": "#F8FAFC",
+      "color": "#111827",
+      "stroke": "#6B7280",
+      "strokeWidth": 2,
+      "fontSize": 24
+    },
+    {
+      "tag": "Person",
+      "shape": "Person",
+      "background": "#E5E7EB",
+      "color": "#111827",
+      "stroke": "#6B7280",
+      "strokeWidth": 2,
+      "fontSize": 24
+    },
+    {
+      "tag": "Software System",
+      "shape": "RoundedBox",
+      "background": "#111827",
+      "color": "#FFFFFF",
+      "stroke": "#111827",
+      "strokeWidth": 3,
+      "fontSize": 26
+    },
+    {
+      "tag": "Container",
+      "shape": "RoundedBox",
+      "background": "#D1D5DB",
+      "color": "#111827",
+      "stroke": "#6B7280",
+      "strokeWidth": 2,
+      "fontSize": 24
+    },
+    {
+      "tag": "Component",
+      "shape": "RoundedBox",
+      "background": "#F3F4F6",
+      "color": "#1F2937",
+      "stroke": "#9CA3AF",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Database",
+      "shape": "Cylinder",
+      "background": "#FDE68A",
+      "color": "#3F2D00",
+      "stroke": "#D97706",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "External",
+      "shape": "RoundedBox",
+      "background": "#FFFFFF",
+      "color": "#374151",
+      "stroke": "#9CA3AF",
+      "strokeWidth": 2,
+      "fontSize": 22,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Boundary",
+      "background": "#FFFFFF",
+      "color": "#6B7280",
+      "stroke": "#D1D5DB",
+      "strokeWidth": 2,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Deployment Node",
+      "shape": "RoundedBox",
+      "background": "#E5E7EB",
+      "color": "#111827",
+      "stroke": "#6B7280",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Infrastructure Node",
+      "shape": "Hexagon",
+      "background": "#F3F4F6",
+      "color": "#1F2937",
+      "stroke": "#6B7280",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Critical",
+      "stroke": "#B91C1C",
+      "strokeWidth": 4
+    },
+    {
+      "tag": "API",
+      "stroke": "#2563EB",
+      "strokeWidth": 3
+    }
+  ],
+  "relationships": [
+    {
+      "tag": "Relationship",
+      "color": "#4B5563",
+      "thickness": 2,
+      "fontSize": 20,
+      "width": 200,
+      "opacity": 100,
+      "position": 50
+    },
+    {
+      "tag": "Synchronous",
+      "color": "#2563EB",
+      "thickness": 3,
+      "fontSize": 20,
+      "width": 200,
+      "style": "Solid"
+    },
+    {
+      "tag": "Asynchronous",
+      "color": "#DC2626",
+      "thickness": 3,
+      "fontSize": 20,
+      "width": 200,
+      "style": "Dashed"
+    }
+  ]
+}

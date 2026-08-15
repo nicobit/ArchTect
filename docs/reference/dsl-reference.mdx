@@ -1,0 +1,135 @@
+---
+title: DSL Reference
+description: Quick syntax reference for Structurizr DSL elements, views, styles, and themes.
+---
+
+ArchTect implements the [Structurizr DSL](https://structurizr.com/help/dsl) for architecture modeling. This page summarizes the key syntax.
+
+## Authoritative grammar
+
+The canonical grammar used by ArchTect's parser is maintained in the repository at:
+
+```
+frontend/src/lib/dsl/grammar.txt
+```
+
+This file describes all supported syntax, view types, and configuration options. When in doubt, this file is the source of truth.
+
+## Quick syntax reference
+
+### Workspace
+
+```dsl
+workspace "Name" "Description" {
+  !identifiers hierarchical    // optional
+  model { ... }
+  views { ... }
+}
+```
+
+### Model elements
+
+```dsl
+identifier = person "Name" "Description"
+identifier = softwareSystem "Name" "Description" {
+  identifier = container "Name" "Description" "Technology"
+  identifier = container "Name" "Description" "Technology" {
+    identifier = component "Name" "Description" "Technology"
+  }
+}
+```
+
+### Groups
+
+```dsl
+group "Group Name" {
+  system1 = softwareSystem "System A"
+  system2 = softwareSystem "System B"
+}
+```
+
+### Relationships
+
+```dsl
+source -> destination "Description" "Technology"
+```
+
+### Tags and properties
+
+```dsl
+element = softwareSystem "Name" {
+  tags "Tag1" "Tag2"
+  properties {
+    "Key" "Value"
+  }
+}
+```
+
+### Deployment
+
+```dsl
+deploymentEnvironment "Production" {
+  deploymentNode "Name" "Description" "Technology" {
+    containerInstance identifier
+    infrastructureNode "Name" "Description" "Technology"
+  }
+}
+```
+
+### Views
+
+```dsl
+views {
+  systemLandscape "Key" { include * autoLayout }
+  systemContext identifier "Key" { include * autoLayout }
+  container identifier "Key" { include * autoLayout }
+  component identifier "Key" { include * autoLayout }
+  dynamic identifier "Key" "Title" { ... autoLayout }
+  deployment identifier "Environment" "Key" { include * autoLayout }
+  filtered "BaseKey" include "Tags" { title "Title" }
+  custom "Key" "Title" "Description" { ... }
+}
+```
+
+### Styles
+
+```dsl
+views {
+  styles {
+    element "Tag" {
+      shape Person|Box|Cylinder|Pipe|...
+      background "#hex"
+      color "#hex"
+      stroke "#hex"
+      strokeWidth number
+      border solid|dashed|dotted
+      opacity 0-100
+      icon "url"
+      width number
+      height number
+    }
+    relationship "Tag" {
+      color "#hex"
+      thickness number
+      opacity 0-100
+      routing Direct|Orthogonal
+      style dashed
+    }
+  }
+}
+```
+
+### Themes
+
+```dsl
+views {
+  theme default
+  themes https://url/to/theme.json
+}
+```
+
+## External references
+
+- [Structurizr DSL reference](https://structurizr.com/help/dsl) — The canonical upstream language reference
+- [DSL Support Matrix](/reference/dsl-support) — What ArchTect supports vs. what is parsed-only or not supported
+- [DSL Basics](/modeling/dsl-basics) — Tutorial-style introduction to the DSL

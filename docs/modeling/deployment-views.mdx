@@ -1,0 +1,129 @@
+---
+title: Deployment Views (DSL)
+description: DSL syntax for modeling deployment environments, nodes, and container instances.
+---
+
+Deployment views show the runtime infrastructure and where your software containers are deployed.
+
+## Deployment model
+
+Before creating a deployment view, define the deployment topology in your model:
+
+```dsl
+model {
+  system = softwareSystem "My System" {
+    api = container "API" "REST API" "Node.js"
+    db = container "Database" "Data storage" "PostgreSQL"
+  }
+
+  deploymentEnvironment "Production" {
+    deploymentNode "AWS" "Amazon Web Services" {
+      deploymentNode "ECS" "Elastic Container Service" {
+        containerInstance api
+      }
+      deploymentNode "RDS" "Relational Database Service" {
+        containerInstance db
+      }
+    }
+  }
+
+  deploymentEnvironment "Development" {
+    deploymentNode "Local Machine" {
+      deploymentNode "Docker" {
+        containerInstance api
+        containerInstance db
+      }
+    }
+  }
+}
+```
+
+## Deployment view syntax
+
+```dsl
+views {
+  deployment system "Production" "ProdView" {
+    include *
+    autoLayout
+  }
+
+  deployment * "Development" "DevView" {
+    include *
+    autoLayout
+  }
+}
+```
+
+## Scoping
+
+| Parameter | Description |
+|---|---|
+| Software system | Which system's containers to show. Use `*` for all systems. |
+| Environment | Which deployment environment to render (must match a `deploymentEnvironment` name). |
+
+## Key elements
+
+| DSL keyword | Purpose |
+|---|---|
+| `deploymentEnvironment` | Defines a named environment (e.g., Production, Staging, Development) |
+| `deploymentNode` | Infrastructure: server, VM, container host, cloud service |
+| `infrastructureNode` | Network infrastructure: load balancer, firewall, CDN |
+| `softwareSystemInstance` | An instance of a software system deployed to a node |
+| `containerInstance` | An instance of a container deployed to a node |
+
+## Nesting
+
+Deployment nodes can be nested to represent infrastructure hierarchies:
+
+```dsl
+deploymentNode "AWS" {
+  deploymentNode "us-east-1" {
+    deploymentNode "VPC" {
+      deploymentNode "ECS Cluster" {
+        containerInstance api
+      }
+      infrastructureNode "ALB" "Application Load Balancer"
+    }
+  }
+}
+```
+
+## Properties and metadata
+
+Deployment nodes support descriptions, technology labels, and properties:
+
+```dsl
+deploymentNode "Web Server" "Serves the frontend" "Nginx" {
+  properties {
+    "Instance Type" "t3.medium"
+    "Count" "3"
+  }
+  containerInstance webapp
+}
+```
+
+## Multiple environments
+
+Define separate environments to show how the same system is deployed differently:
+
+```dsl
+deploymentEnvironment "Production" {
+  deploymentNode "AWS" { ... }
+}
+
+deploymentEnvironment "Staging" {
+  deploymentNode "AWS" { ... }
+}
+
+deploymentEnvironment "Development" {
+  deploymentNode "Docker Compose" { ... }
+}
+```
+
+Each environment gets its own deployment view.
+
+## See also
+
+- [Views](/modeling/views) — Overview of all view types
+- [DSL Basics](/modeling/dsl-basics) — Workspace and element definitions
+- [Deployment Views (Portal Guide)](/portal-guide/views-panel) — Working with deployment views in the UI

@@ -1,0 +1,232 @@
+{
+  "name": "Dark Architecture",
+  "description": "Technical, focused palette for editor use and presentations on dark screens. Surfaces sit at different luminance levels rather than simply inverting a light palette, and saturated colors are softened. Pair with a dark canvas background (Appearance tab -> Background color, e.g. #10141B) for the intended look. Same semantic role -> color mapping as the other curated palettes.",
+  "elements": [
+    {
+      "tag": "Person",
+      "shape": "Person",
+      "background": "#25324A",
+      "color": "#A7BCDA",
+      "stroke": "#A7BCDA",
+      "strokeWidth": 2,
+      "border": "Solid"
+    },
+    {
+      "tag": "External Person",
+      "shape": "Person",
+      "background": "#25324A",
+      "color": "#A7BCDA",
+      "stroke": "#A7BCDA",
+      "strokeWidth": 2,
+      "border": "Dashed",
+      "opacity": 70
+    },
+    {
+      "tag": "Software System",
+      "shape": "Box",
+      "background": "#245B8F",
+      "color": "#9ACDF9",
+      "stroke": "#9ACDF9",
+      "strokeWidth": 2,
+      "border": "Solid"
+    },
+    {
+      "tag": "External",
+      "background": "#343A46",
+      "color": "#B8C1CD",
+      "stroke": "#7C8899",
+      "strokeWidth": 2,
+      "border": "Dashed",
+      "opacity": 70
+    },
+    {
+      "tag": "Container",
+      "shape": "RoundedBox",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2,
+      "border": "Solid"
+    },
+    {
+      "tag": "Application",
+      "shape": "RoundedBox",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "WebApp",
+      "shape": "WebBrowser",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "MobileApp",
+      "shape": "MobileDevicePortrait",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Api",
+      "shape": "Hexagon",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Worker",
+      "shape": "RoundedBox",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Database",
+      "shape": "Cylinder",
+      "background": "#204A44",
+      "color": "#8BC6BA",
+      "stroke": "#8BC6BA",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Cache",
+      "shape": "RoundedBox",
+      "background": "#204A44",
+      "color": "#8BC6BA",
+      "stroke": "#8BC6BA",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "MessageBroker",
+      "shape": "Pipe",
+      "background": "#44365D",
+      "color": "#B89AD9",
+      "stroke": "#B89AD9",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Storage",
+      "shape": "Folder",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Web Browser",
+      "shape": "WebBrowser",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Mobile App",
+      "shape": "MobileDeviceLandscape",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Component",
+      "shape": "RoundedBox",
+      "background": "#293441",
+      "color": "#90A8BF",
+      "stroke": "#90A8BF",
+      "strokeWidth": 2,
+      "border": "Solid"
+    },
+    {
+      "tag": "Code",
+      "shape": "RoundedBox",
+      "background": "#293441",
+      "color": "#90A8BF",
+      "stroke": "#90A8BF",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Deployment Environment",
+      "shape": "RoundedBox",
+      "background": "#171C24",
+      "color": "#7F92A6",
+      "stroke": "#7F92A6",
+      "strokeWidth": 1,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Deployment Node",
+      "shape": "RoundedBox",
+      "background": "#171C24",
+      "color": "#7F92A6",
+      "stroke": "#7F92A6",
+      "strokeWidth": 1,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Infrastructure Node",
+      "shape": "RoundedBox",
+      "background": "#171C24",
+      "color": "#7F92A6",
+      "stroke": "#7F92A6",
+      "strokeWidth": 1
+    },
+    {
+      "tag": "Software System Instance",
+      "shape": "Box",
+      "background": "#245B8F",
+      "color": "#9ACDF9",
+      "stroke": "#9ACDF9",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Container Instance",
+      "shape": "RoundedBox",
+      "background": "#244B6C",
+      "color": "#8CBEE8",
+      "stroke": "#8CBEE8",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Robot",
+      "shape": "Robot",
+      "background": "#25324A",
+      "color": "#A7BCDA",
+      "stroke": "#A7BCDA",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Circle",
+      "shape": "Circle",
+      "background": "#245B8F",
+      "color": "#9ACDF9",
+      "stroke": "#9ACDF9",
+      "strokeWidth": 2
+    },
+    {
+      "tag": "Ellipse",
+      "shape": "Ellipse",
+      "background": "#245B8F",
+      "color": "#9ACDF9",
+      "stroke": "#9ACDF9",
+      "strokeWidth": 2
+    }
+  ],
+  "relationships": [
+    {
+      "tag": "Relationship",
+      "color": "#8290A3",
+      "thickness": 2,
+      "fontSize": 12,
+      "opacity": 100
+    }
+  ]
+}

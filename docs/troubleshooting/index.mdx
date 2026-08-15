@@ -1,0 +1,36 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for ArchTect.
+---
+
+Having issues? Start here. This section covers the most common problems and how to resolve them.
+
+## Quick fixes
+
+| Symptom | Likely cause | Solution |
+|---|---|---|
+| DSL parser reports errors | Syntax issue in `.dsl` file | See [Validation Errors](/troubleshooting/validation) |
+| A view doesn't appear | Missing or duplicate view key | See [Missing Views](/troubleshooting/view-missing) |
+| Extension editor opens blank | Frontend bundle not built | See [VS Code Webview Issues](/troubleshooting/webview) |
+| Layout looks different each time | Layout engine or positions not saved | Save with `Ctrl+S`; check the layout engine is set per view in the Inspector |
+| Inspector changes not applying | Element not selected or not saved | Click the element, make changes, click **Save** |
+| Export produces empty image | No elements in current view | Check `include` rules in the view definition |
+
+## Detailed guides
+
+- [Validation Errors](/troubleshooting/validation) — DSL syntax and semantic errors
+- [Missing Views](/troubleshooting/view-missing) — Views not showing in the panel
+- [VS Code Webview Issues](/troubleshooting/webview) — Extension editor problems
+- [MCP Diagnostics](/troubleshooting/mcp) — AI client and MCP server connection issues
+
+## Still stuck?
+
+If none of the above helps:
+
+1. Check the browser developer tools console (F12) for JavaScript errors.
+2. In VS Code, run `ArchTect: Show Copilot Diagnostics` to capture environment info.
+3. [Open an issue on GitHub](https://github.com/nicobit/Archtect/issues) with:
+    - What you expected to happen
+    - What actually happened
+    - Your DSL file (or a minimal reproduction)
+    - Browser/VS Code version

@@ -1,0 +1,48 @@
+---
+title: VS Code Extension
+description: Overview of the ArchTect VS Code extension — installation, editor integration, and AI tooling.
+sidebarTitle: Overview
+---
+
+<Note>
+**The recommended path:** ArchTect embedded directly in your editor, with VS Code-native AI tooling.
+</Note>
+
+## The same portal, wired into VS Code
+
+The extension embeds the ArchTect portal as a custom editor for `.dsl` and `.nbc4` files, and adds Command Palette commands, a Copilot chat participant, and an embedded MCP server on top.
+
+<CardGroup cols={2}>
+  <Card title="Install the extension" icon="download" href="/getting-started/vscode-extension" />
+  <Card title="Browse commands" icon="terminal" href="/vscode-extension/commands" />
+</CardGroup>
+
+<Card title="Beyond the browser app">
+- Full Command Palette integration
+- `@archtect` Copilot chat participant
+- Embedded MCP server for AI tool access
+- Native `.dsl` / `.nbc4` file handling
+</Card>
+
+## What it adds beyond the browser app
+
+| Capability | Details |
+|---|---|
+| [Commands](/vscode-extension/commands) | Full command surface in the Command Palette and ArchTect menu |
+| [MCP Server Integration](/vscode-extension/mcp) | Exposes ArchTect's model as tools other AI clients (Claude Code, Copilot) can call |
+| [Copilot Chat Participant](/vscode-extension/copilot) | `@archtect` in GitHub Copilot Chat, with `/tools`, `/context`, and `/route` subcommands |
+| Native file handling | `.dsl` and `.nbc4` open directly in the ArchTect editor via VS Code's custom editor API |
+| Sidebar view | An "ArchTect" activity bar entry listing DSL files (behind `archtect.showSidebar`) |
+
+Everything else — the canvas, Inspector, Views panel, and so on — is the same [Portal Guide](/portal-guide) content whether you're in VS Code or the browser.
+
+## Installation
+
+See [Getting Started: VS Code Extension](/getting-started/vscode-extension) for installation and first-open steps.
+
+## See also
+
+- [Commands](/vscode-extension/commands)
+- [MCP Server Integration](/vscode-extension/mcp)
+- [Copilot Chat Participant](/vscode-extension/copilot)
+- [Webview Architecture](/vscode-extension/webview)

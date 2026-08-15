@@ -1,0 +1,41 @@
+{
+  "name": "Neutral Enterprise",
+  "description": "Conservative, governance-friendly palette for formal architecture documentation and regulated organizations. Same semantic role -> color mapping as the other curated palettes.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person", "background": "#ECEFF1", "color": "#263238", "stroke": "#607D8B", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",  "shape": "Person", "background": "#ECEFF1", "color": "#263238", "stroke": "#607D8B", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Software System", "shape": "Box", "background": "#455A64", "color": "#FFFFFF", "stroke": "#263238", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                        "background": "#E0E0E0", "color": "#424242", "stroke": "#757575", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Container",   "shape": "RoundedBox", "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application", "shape": "RoundedBox", "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "WebApp",      "shape": "WebBrowser",           "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "MobileApp",   "shape": "MobileDevicePortrait", "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "Api",         "shape": "Hexagon",              "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "Worker",      "shape": "RoundedBox",           "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "Database",    "shape": "Cylinder",             "background": "#D7E5E2", "color": "#29413D", "stroke": "#607D78", "strokeWidth": 2 },
+    { "tag": "Cache",       "shape": "RoundedBox",           "background": "#D7E5E2", "color": "#29413D", "stroke": "#607D78", "strokeWidth": 2 },
+    { "tag": "MessageBroker", "shape": "Pipe",               "background": "#E4E0E8", "color": "#443E49", "stroke": "#756E7D", "strokeWidth": 2 },
+    { "tag": "Storage",     "shape": "Folder",               "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "Web Browser", "shape": "WebBrowser",           "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+    { "tag": "Mobile App",  "shape": "MobileDeviceLandscape", "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+
+    { "tag": "Component", "shape": "RoundedBox", "background": "#F5F7F8", "color": "#37474F", "stroke": "#90A4AE", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",      "shape": "RoundedBox", "background": "#F5F7F8", "color": "#37474F", "stroke": "#90A4AE", "strokeWidth": 2 },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#FAFAFA", "color": "#546E7A", "stroke": "#B0BEC5", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox", "background": "#FAFAFA", "color": "#546E7A", "stroke": "#B0BEC5", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox", "background": "#FAFAFA", "color": "#546E7A", "stroke": "#B0BEC5", "strokeWidth": 1 },
+
+    { "tag": "Software System Instance", "shape": "Box",        "background": "#455A64", "color": "#FFFFFF", "stroke": "#263238", "strokeWidth": 2 },
+    { "tag": "Container Instance",       "shape": "RoundedBox", "background": "#CFD8DC", "color": "#263238", "stroke": "#78909C", "strokeWidth": 2 },
+
+    { "tag": "Robot",   "shape": "Robot",   "background": "#ECEFF1", "color": "#263238", "stroke": "#607D8B", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#455A64", "color": "#FFFFFF", "stroke": "#263238", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#455A64", "color": "#FFFFFF", "stroke": "#263238", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#455A64", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

@@ -1,0 +1,85 @@
+---
+title: VS Code Extension
+description: Install and configure the ArchTect extension for Visual Studio Code.
+---
+
+The VS Code extension is the recommended way to use ArchTect. It integrates directly into your editor with full Copilot support.
+
+## Installation
+
+1. Open VS Code.
+2. Go to the **Extensions** view (`Ctrl+Shift+X`).
+3. Search for **ArchTect**.
+4. Click **Install**.
+
+<Note>
+**Compatibility**
+
+Requires VS Code 1.84 or later. Also works with compatible forks (e.g. VS Codium, Cursor).
+</Note>
+
+## Opening a DSL file
+
+The simplest way to start:
+
+1. Create or open a `.dsl` file in VS Code.
+2. The **ArchTect icon** appears in the editor title bar (top right).
+3. Click the icon to open the visual canvas editor.
+
+| Method | Steps |
+|---|---|
+| **Editor title icon** | Open a `.dsl` file → click the ArchTect icon in the title bar |
+| **Explorer context menu** | Right-click a `.dsl` file → **ArchTect: Open with ArchTect** |
+| **Explorer context menu (folder)** | Right-click a project folder → **ArchTect: Open Project** |
+
+## Command Palette commands
+
+These commands are always available in the Command Palette (`Ctrl+Shift+P`):
+
+| Command | Description |
+|---|---|
+| `ArchTect: New Project` | Create a new workspace with wizard |
+| `ArchTect: Open Generation Center` | Open the documentation generation center |
+| `ArchTect: Open User Guide` | Open the ArchTect user guide |
+| `ArchTect: Show Copilot Diagnostics` | Debug AI integration issues |
+
+When the ArchTect editor is active, additional commands are available via the **ArchTect menu** in the menu bar:
+
+| Command | Description |
+|---|---|
+| `ArchTect: Save` | Save the current project |
+| `ArchTect: Export PNG` | Export current view as PNG |
+| `ArchTect: Export SVG` | Export current view as SVG |
+| `ArchTect: Create View` | Create a new view |
+| `ArchTect: Edit Architecture Info` | Edit workspace-level metadata |
+| `ArchTect: Generate Documentation` | Generate arc42 documentation |
+| `ArchTect: Validate Architecture` | Run DSL validation |
+
+See [VS Code Commands](/reference/commands-vscode) for the full list.
+
+## AI and Copilot integration
+
+ArchTect includes a **Copilot chat participant** — type `@archtect` in the Copilot chat to ask questions about your model, get DSL suggestions, or generate documentation.
+
+The extension also provides an in-app AI chat panel for modeling assistance without leaving the editor — see [AI Chat](/portal-guide/ai-chat).
+
+<Tip>
+**MCP integration**
+
+Use `ArchTect: MCP Configure Client` to set up Model Context Protocol integration for richer AI interactions. Use `ArchTect: MCP Configure Claude Code` for Claude Code integration.
+</Tip>
+
+## File types
+
+| File | Purpose |
+|---|---|
+| `*.dsl` | Structurizr DSL model definition |
+| `*.nbc4` | ArchTect native project file |
+
+See [File Types](/reference/file-types) for details.
+
+## Next steps
+
+- [Your First Project](/getting-started/first-project) — Create a workspace from scratch
+- [UI Tour](/getting-started/ui-tour) — Learn the main areas of the interface
+- [DSL Basics](/modeling/dsl-basics) — Structurizr DSL syntax guide

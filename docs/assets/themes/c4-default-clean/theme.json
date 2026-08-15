@@ -1,0 +1,178 @@
+{
+  "name": "C4 Default",
+  "description": "Built-in default C4 theme (shapes + basic colors) used when a workspace has no styles/themes.",
+  "elements": [
+    {
+      "tag": "Person",
+      "shape": "Person",
+      "background": "#08427b",
+      "color": "#ffffff",
+      "stroke": "#08427b"
+    },
+    {
+      "tag": "External Person",
+      "shape": "Person",
+      "background": "#e5e7eb",
+      "color": "#0f172a",
+      "stroke": "#9ca3af",
+      "opacity": 70,
+      "border": "dashed"
+    },
+
+    {
+      "tag": "Software System",
+      "shape": "Box",
+      "background": "#1168bd",
+      "color": "#ffffff",
+      "stroke": "#1168bd"
+    },
+    {
+      "tag": "External",
+      "background": "#e5e7eb",
+      "color": "#0f172a",
+      "stroke": "#9ca3af",
+      "opacity": 70,
+      "border": "dashed"
+    },
+
+    {
+      "tag": "Container",
+      "shape": "RoundedBox",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+
+    {
+      "tag": "Application",
+      "shape": "RoundedBox",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "WebApp",
+      "shape": "WebBrowser",
+      "background": "#1d4ed8",
+      "color": "#ffffff",
+      "stroke": "#1e40af"
+    },
+    {
+      "tag": "MobileApp",
+      "shape": "MobileDevicePortrait",
+      "background": "#1d4ed8",
+      "color": "#ffffff",
+      "stroke": "#1e40af"
+    },
+    {
+      "tag": "Api",
+      "shape": "Hexagon",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "Worker",
+      "shape": "RoundedBox",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "Database",
+      "shape": "Cylinder",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "Cache",
+      "shape": "RoundedBox",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "MessageBroker",
+      "shape": "Pipe",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+    {
+      "tag": "Storage",
+      "shape": "Folder",
+      "background": "#438dd5",
+      "color": "#ffffff",
+      "stroke": "#438dd5"
+    },
+
+    {
+      "tag": "Component",
+      "shape": "RoundedBox",
+      "background": "#85bbf0",
+      "color": "#ffffff",
+      "stroke": "#85bbf0"
+    },
+    {
+      "tag": "Code",
+      "shape": "RoundedBox",
+      "background": "#e0e7ff",
+      "color": "#0f172a",
+      "stroke": "#a5b4fc"
+    },
+
+    {
+      "tag": "Web Browser",
+      "shape": "WebBrowser",
+      "background": "#1d4ed8",
+      "color": "#ffffff",
+      "stroke": "#1e40af"
+    },
+    {
+      "tag": "Mobile App",
+      "shape": "MobileDeviceLandscape",
+      "background": "#1d4ed8",
+      "color": "#ffffff",
+      "stroke": "#1e40af"
+    },
+
+    {
+      "tag": "Deployment Environment",
+      "shape": "RoundedBox",
+      "background": "#334155",
+      "color": "#ffffff",
+      "stroke": "#0f172a"
+    },
+    {
+      "tag": "Deployment Node",
+      "shape": "RoundedBox",
+      "background": "#475569",
+      "color": "#ffffff",
+      "stroke": "#0f172a"
+    },
+    {
+      "tag": "Infrastructure Node",
+      "shape": "RoundedBox",
+      "background": "#64748b",
+      "color": "#ffffff",
+      "stroke": "#334155"
+    },
+
+    {
+      "tag": "Software System Instance",
+      "shape": "Box",
+      "background": "#1e40af",
+      "color": "#ffffff",
+      "stroke": "#1e3a8a"
+    },
+    {
+      "tag": "Container Instance",
+      "shape": "RoundedBox",
+      "background": "#1d4ed8",
+      "color": "#ffffff",
+      "stroke": "#1e40af"
+    }
+  ],
+  "relationships": []
+}

@@ -1,0 +1,132 @@
+---
+title: Relationships
+description: Defining, styling, and referencing relationships between architecture elements.
+---
+
+Relationships define how elements in your architecture communicate with each other. They are a core part of the Structurizr DSL model.
+
+## Basic syntax
+
+```dsl
+source -> destination "description"
+```
+
+With technology:
+
+```dsl
+source -> destination "description" "technology"
+```
+
+## Examples
+
+```dsl
+user -> webapp "Uses"
+webapp -> api "Makes API calls to" "HTTPS/JSON"
+api -> db "Reads from and writes to" "JDBC"
+api -> emailService "Sends notifications via" "SMTP"
+```
+
+## Implicit relationships
+
+Inside an element block, you can use implicit `this` to define relationships from the current element:
+
+```dsl
+person "User" {
+  -> system "Uses"
+}
+
+softwareSystem "My System" {
+  -> externalApi "Fetches data from" "REST"
+}
+```
+
+This is equivalent to:
+
+```dsl
+user = person "User"
+system = softwareSystem "My System"
+user -> system "Uses"
+```
+
+## Relationship properties
+
+Relationships support the same metadata as elements:
+
+```dsl
+user -> system "Uses" {
+  tags "Critical" "External"
+  properties {
+    "Protocol" "HTTPS"
+    "SLA" "99.9%"
+  }
+}
+```
+
+## Relationship identifiers
+
+You can assign identifiers to relationships for referencing in views:
+
+```dsl
+rel = user -> system "Uses"
+```
+
+This is optional but useful when you need to reference specific relationships in dynamic views or filtered views.
+
+## Styling relationships
+
+Use the `styles` block to style relationships by tag:
+
+```dsl
+styles {
+  relationship "Relationship" {
+    color "#707070"
+    thickness 2
+    style dashed
+  }
+  relationship "Critical" {
+    color "#ff0000"
+    thickness 3
+  }
+}
+```
+
+### Supported style properties
+
+| Property | Description | Values |
+|---|---|---|
+| `color` / `colour` | Line color | Hex color (e.g., `"#707070"`) |
+| `thickness` | Line thickness | Number (e.g., `2`) |
+| `opacity` | Line opacity | `0`–`100` |
+| `routing` | Line routing | `Direct`, `Orthogonal` |
+| `style` | Line style | `dashed` (solid is default) |
+
+## Relationships in views
+
+Relationships appear automatically in views when both the source and target elements are included. Use `include` and `exclude` to control which elements (and therefore which relationships) are visible:
+
+```dsl
+systemContext mySystem "Context" {
+  include *
+  autoLayout
+}
+```
+
+In dynamic views, relationships are referenced as ordered interaction steps:
+
+```dsl
+dynamic mySystem "Flow" {
+  user -> webapp "Submits form"
+  webapp -> api "Forwards request"
+  api -> db "Queries data"
+}
+```
+
+## Default tag
+
+All relationships automatically have the `Relationship` tag. A style like `relationship "Relationship" { ... }` applies to all relationships unless overridden by more specific tag styles.
+
+## See also
+
+- [DSL Basics](/modeling/dsl-basics) — Workspace structure and element types
+- [Views](/modeling/views) — How views display relationships
+- [Dynamic Views](/modeling/dynamic-views) — Ordered interactions in dynamic views

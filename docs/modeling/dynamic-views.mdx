@@ -1,0 +1,95 @@
+---
+title: Dynamic Views (DSL)
+description: DSL syntax for modeling ordered interactions and sequence flows.
+---
+
+Dynamic views show ordered interactions between elements, modeling how your system behaves during a specific scenario or use case.
+
+## Basic syntax
+
+Dynamic views are scoped to a software system or container:
+
+```dsl
+dynamic mySystem "LoginFlow" "User authentication flow" {
+  user -> webapp "Submits credentials"
+  webapp -> authService "Validates credentials"
+  authService -> db "Queries user record"
+  authService -> webapp "Returns auth token"
+  webapp -> user "Redirects to dashboard"
+  autoLayout
+}
+```
+
+## Scope
+
+| Scope | What it means |
+|---|---|
+| `dynamic mySystem` | Interactions between elements that are part of or interact with `mySystem` |
+| `dynamic myContainer` | Interactions between components within `myContainer` |
+| `dynamic *` | Interactions across the entire workspace (no scope restriction) |
+
+## How steps work
+
+Each line in a dynamic view defines an interaction step:
+
+```dsl
+source -> destination "description"
+```
+
+- Steps are **numbered automatically** in the order they appear.
+- The source and destination must be elements defined in the `model { }` block.
+- The description can **override** the static relationship description — it describes what happens in this specific scenario, not the general relationship.
+
+## Step numbering
+
+Steps are numbered sequentially starting from 1. The numbering appears on the canvas as labels on the interaction arrows:
+
+```dsl
+dynamic mySystem "OrderFlow" {
+  customer -> webapp "1. Places order"        // Step 1
+  webapp -> api "2. Forwards order"           // Step 2
+  api -> db "3. Saves order"                  // Step 3
+  api -> emailService "4. Sends confirmation" // Step 4
+}
+```
+
+You don't need to write the numbers yourself — ArchTect adds them automatically based on the order of lines.
+
+## Parallel interactions
+
+To show interactions that happen concurrently, you can use the `{` `}` block syntax:
+
+```dsl
+dynamic mySystem "ParallelOps" {
+  api -> db "Queries data"
+  {
+    api -> cache "Updates cache"
+    api -> logger "Logs request"
+  }
+  api -> webapp "Returns response"
+}
+```
+
+## Layout
+
+Dynamic views support the same layout options as other views:
+
+```dsl
+dynamic mySystem "Flow" {
+  ...
+  autoLayout
+  autoLayout lr  // left-to-right
+}
+```
+
+## Tips
+
+- **Keep scenarios focused** — Each dynamic view should model one specific use case or flow. Don't try to show everything in one view.
+- **Use descriptive names** — The view key and title should clearly identify the scenario (e.g., "UserLogin", "OrderCheckout", "PaymentProcessing").
+- **Override descriptions** — Use scenario-specific descriptions rather than repeating the static relationship description.
+
+## See also
+
+- [Views](/modeling/views) — Overview of all view types
+- [Relationships](/modeling/relationships) — Static relationship definitions
+- [Dynamic / Sequence Views (Portal Guide)](/portal-guide/views-panel) — Working with dynamic views in the UI

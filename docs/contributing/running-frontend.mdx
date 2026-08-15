@@ -1,0 +1,41 @@
+---
+title: Running the Frontend
+description: Starting the dev server and understanding the different Vite build configs.
+---
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+This starts Vite on `http://localhost:5173/Archtect/` (the base path is fixed in `vite.config.ts`). The browser app and the VS Code webview build from the same source — running `npm run dev` gives you the browser-app experience directly.
+
+## Vite config variants
+
+The frontend has several Vite configs for different build targets, beyond the default `vite.config.ts` used by `npm run dev`:
+
+| Config | Purpose |
+|---|---|
+| `vite.config.ts` | Default dev server and standard build |
+| `vite.config_extension.ts` | Builds the bundle the VS Code extension copies into `extension/media/` |
+| `vite.config_web.ts` | Browser-app-specific build variant |
+| `vite.config_zip.ts` | Produces the distributable frontend zip build |
+| `vite.config_exporter.ts` | Builds the Node.js exporter bundle used for headless/background export |
+| `vite.config_docgen.ts` (repo root) | Documentation-generation build variant |
+
+## Key scripts
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Standard production build |
+| `npm run build:zip` | Build + package as `build/frontend-build.zip` |
+| `npm run build:exporter` | Build the Node exporter bundle |
+| `npm run preview` | Preview a production build locally |
+
+## See also
+
+- [Testing](/contributing/testing)
+- [Building the Extension](/contributing/building-extension)
+- [Regenerating Doc Screenshots](/contributing/doc-screenshots) — drives this same dev server headlessly

@@ -1,0 +1,41 @@
+{
+  "name": "Modern Product",
+  "description": "Modern, light, friendly palette closer to Figma/Linear/contemporary SaaS interfaces -- appropriate for product teams and workshops. Same semantic role -> color mapping as the other curated palettes.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person", "background": "#EEF2FF", "color": "#3730A3", "stroke": "#818CF8", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",  "shape": "Person", "background": "#EEF2FF", "color": "#3730A3", "stroke": "#818CF8", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Software System", "shape": "Box", "background": "#4F46E5", "color": "#FFFFFF", "stroke": "#3730A3", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                        "background": "#F1F5F9", "color": "#334155", "stroke": "#94A3B8", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Container",   "shape": "RoundedBox", "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application", "shape": "RoundedBox", "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "WebApp",      "shape": "WebBrowser",           "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "MobileApp",   "shape": "MobileDevicePortrait", "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "Api",         "shape": "Hexagon",              "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "Worker",      "shape": "RoundedBox",           "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "Database",    "shape": "Cylinder",             "background": "#D1FAE5", "color": "#065F46", "stroke": "#34D399", "strokeWidth": 2 },
+    { "tag": "Cache",       "shape": "RoundedBox",           "background": "#D1FAE5", "color": "#065F46", "stroke": "#34D399", "strokeWidth": 2 },
+    { "tag": "MessageBroker", "shape": "Pipe",               "background": "#F3E8FF", "color": "#6B21A8", "stroke": "#C084FC", "strokeWidth": 2 },
+    { "tag": "Storage",     "shape": "Folder",               "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "Web Browser", "shape": "WebBrowser",           "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+    { "tag": "Mobile App",  "shape": "MobileDeviceLandscape", "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+
+    { "tag": "Component", "shape": "RoundedBox", "background": "#F8FAFC", "color": "#334155", "stroke": "#CBD5E1", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",      "shape": "RoundedBox", "background": "#F8FAFC", "color": "#334155", "stroke": "#CBD5E1", "strokeWidth": 2 },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#FFFFFF", "color": "#64748B", "stroke": "#CBD5E1", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox", "background": "#FFFFFF", "color": "#64748B", "stroke": "#CBD5E1", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox", "background": "#FFFFFF", "color": "#64748B", "stroke": "#CBD5E1", "strokeWidth": 1 },
+
+    { "tag": "Software System Instance", "shape": "Box",        "background": "#4F46E5", "color": "#FFFFFF", "stroke": "#3730A3", "strokeWidth": 2 },
+    { "tag": "Container Instance",       "shape": "RoundedBox", "background": "#DBEAFE", "color": "#1E3A8A", "stroke": "#60A5FA", "strokeWidth": 2 },
+
+    { "tag": "Robot",   "shape": "Robot",   "background": "#EEF2FF", "color": "#3730A3", "stroke": "#818CF8", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#4F46E5", "color": "#FFFFFF", "stroke": "#3730A3", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#4F46E5", "color": "#FFFFFF", "stroke": "#3730A3", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#475569", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

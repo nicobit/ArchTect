@@ -1,0 +1,92 @@
+---
+title: View Settings
+description: Configure layout engines, themes, and view metadata.
+---
+
+View settings control layout behavior and visual presentation for each view. Access them by clicking the canvas background (deselecting all elements) or selecting a view in the Views panel.
+
+## Layout engine
+
+ArchTect supports multiple layout engines. Each view can use a different engine, and the choice is **saved per view** in the DSL properties block.
+
+| Engine | Description | Best for |
+|---|---|---|
+| **Default** | The built-in default layout | General use |
+| **Graphviz** | Classic graph layout engine | Dense, interconnected graphs |
+| **Dagre** | Directed acyclic graph layout | Tree-like structures |
+| **ELK** | Eclipse Layout Kernel — hierarchical, layered layouts | Complex diagrams with many layers |
+
+To change the layout engine:
+
+1. Click the canvas background to show view-level settings in the Inspector.
+2. Select the desired engine from the **Layout Engine** dropdown.
+3. The view re-renders with the new engine.
+
+<Note>
+**Saved in DSL**
+
+The layout engine choice is stored in the view's `properties` block in the DSL. For example:
+
+```dsl
+systemContext mySystem "Context" {
+  include *
+  autoLayout
+  properties {
+    layoutEngine graphviz
+  }
+}
+```
+
+Each layout engine exposes additional settings in the Inspector when selected (e.g., spacing, node separation, edge routing).
+</Note>
+
+## Auto layout direction
+
+| Direction | Description |
+|---|---|
+| **Top to bottom** | Default flow direction |
+| **Bottom to top** | Reversed vertical flow |
+| **Left to right** | Horizontal flow |
+| **Right to left** | Reversed horizontal flow |
+
+## Themes
+
+Themes control the visual style of elements and relationships. You can:
+
+- **Apply theme presets** — Use built-in theme styles
+- **Add theme URLs** — Load external Structurizr themes (e.g., AWS icons, Azure icons)
+- **Reorder themes** — Theme order controls precedence; later themes override earlier ones
+
+### In DSL
+
+```dsl
+views {
+  theme default
+  themes https://static.structurizr.com/themes/amazon-web-services-2023.01.31/theme.json
+}
+```
+
+### In the Inspector
+
+Select a view (click canvas background) and use the Themes section to add, remove, or reorder themes.
+
+See [Themes](/editing/themes) for the full theme reference.
+
+## View title and description
+
+Each view can have a title and description displayed on the canvas:
+
+```dsl
+systemContext mySystem "Context" {
+  include *
+  autoLayout
+  title "System Context Diagram"
+  description "Shows external users and systems"
+}
+```
+
+## See also
+
+- [Canvas](/editing/canvas) — Canvas navigation and editing
+- [Inspector](/editing/inspector) — Editing element and relationship properties
+- [Themes](/editing/themes) — Theme configuration details

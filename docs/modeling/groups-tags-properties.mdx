@@ -1,0 +1,69 @@
+---
+title: Groups, Tags & Properties
+description: Organizing your model with groups, and annotating elements with tags and properties.
+---
+
+## Groups
+
+Groups organize related elements within a named boundary. In the [Explorer panel](/portal-guide/explorer), the model tree is grouped exactly along these boundaries:
+
+```dsl
+model {
+  group "Internal Systems" {
+    system1 = softwareSystem "System A"
+    system2 = softwareSystem "System B"
+  }
+}
+```
+
+Groups can be nested:
+
+```dsl
+group "Platform" {
+  group "Core Services" {
+    auth = softwareSystem "Auth Service"
+    users = softwareSystem "User Service"
+  }
+}
+```
+
+## Tags
+
+Tags are used for styling and filtering. Every element has a default tag matching its type (e.g., `Element`, `Person`, `Software System`). Add custom tags:
+
+```dsl
+user = person "User" {
+  tags "External" "Human"
+}
+
+system = softwareSystem "My System" {
+  tags "Core" "Internal"
+}
+```
+
+Tags drive the `styles { }` block — see [Views](/modeling/views) — and are also visible and editable per-element in the [Inspector](/portal-guide/inspector).
+
+## Properties
+
+Key-value pairs for custom metadata:
+
+```dsl
+system = softwareSystem "My System" {
+  properties {
+    "Owner" "Platform Team"
+    "SLA" "99.9%"
+  }
+}
+```
+
+Properties don't affect rendering — they're for documentation and governance, and they surface in the Inspector's Custom Properties section and in generated [arc42 documentation](/export/arc42).
+
+## Bulk tagging and extension
+
+Use `!element` and `!elements` to add tags, properties, or relationships to elements defined earlier in the file, including bulk operations by tag or type expression — see [!element / !elements Quick Reference](/reference/extend-element-reference).
+
+## See also
+
+- [Elements](/modeling/elements) — The element types groups and tags apply to
+- [Views](/modeling/views) — How tags drive `styles { }`
+- [Explorer](/portal-guide/explorer) — Browsing your model by group

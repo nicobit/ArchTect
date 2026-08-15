@@ -1,0 +1,70 @@
+---
+title: Documentation Map
+description: How ArchTect generates arc42 architecture documentation from your model.
+---
+
+ArchTect can generate structured architecture documentation from your model, following the [arc42](https://arc42.org/) template.
+
+## What is arc42?
+
+arc42 is a widely-used template for software architecture documentation. It organizes documentation into standardized sections that cover different aspects of the architecture — from business context to deployment.
+
+## Generating documentation
+
+### VS Code extension
+
+1. Open your project in the ArchTect editor.
+2. Command Palette → `ArchTect: Generate Documentation`.
+3. The generated Markdown files are saved to the output folder.
+
+### Browser app
+
+1. Open the **Architecture** menu in the top bar.
+2. Select **Generate Documentation**.
+3. Download the generated Markdown files.
+
+## View-to-section mapping
+
+ArchTect automatically maps your views to the correct arc42 sections:
+
+| arc42 section | C4 / Structurizr view type |
+|---|---|
+| **Context & Scope** | System Landscape, System Context |
+| **Building Block View** | Container, Component |
+| **Runtime View** | Dynamic |
+| **Deployment View** | Deployment |
+
+<Note>
+**Unassigned views**
+
+Filtered and Custom views are not automatically assigned to an arc42 section. They are listed separately in the output.
+</Note>
+
+## AI-assisted documentation
+
+ArchTect can use AI to enhance generated documentation:
+
+- **Section descriptions** — AI generates prose descriptions for each arc42 section based on the elements and relationships in your model.
+- **Element summaries** — AI describes the purpose and role of elements based on their names, descriptions, and relationships.
+- **Gap detection** — AI identifies sections that lack views or content.
+
+<Tip>
+**Review AI-generated content**
+
+Always review AI-generated descriptions for accuracy. They provide a starting point — not a final deliverable.
+</Tip>
+
+## Output format
+
+Generated documentation is saved as Markdown files, one per arc42 section. The output includes:
+
+- Embedded diagram references (PNG or SVG exports)
+- Element tables with names, descriptions, and technologies
+- Relationship tables
+- View descriptions and titles
+
+## See also
+
+- [Export](/export) — All export formats
+- [arc42 Documentation Generation](/export/arc42) — Detailed generation guide
+- [View Types](/modeling/views) — Understanding which views map to which sections

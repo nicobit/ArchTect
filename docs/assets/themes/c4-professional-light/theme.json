@@ -1,0 +1,146 @@
+{
+  "name": "Vivid",
+  "description": "Professional semantic light theme for Structurizr C4 diagrams",
+  "elements": [
+    {
+      "tag": "Element",
+      "shape": "RoundedBox",
+      "background": "#EAF2F8",
+      "color": "#0F172A",
+      "stroke": "#5B6B7A",
+      "strokeWidth": 2,
+      "fontSize": 24,
+      "border": "Solid",
+      "opacity": 100
+    },
+    {
+      "tag": "Person",
+      "shape": "Person",
+      "background": "#6FCF97",
+      "color": "#0B1F14",
+      "stroke": "#2F855A",
+      "strokeWidth": 2,
+      "fontSize": 24
+    },
+    {
+      "tag": "Software System",
+      "shape": "RoundedBox",
+      "background": "#2F80ED",
+      "color": "#FFFFFF",
+      "stroke": "#1C5DB6",
+      "strokeWidth": 3,
+      "fontSize": 26
+    },
+    {
+      "tag": "Container",
+      "shape": "RoundedBox",
+      "background": "#56CCF2",
+      "color": "#0B2239",
+      "stroke": "#2D9CDB",
+      "strokeWidth": 2,
+      "fontSize": 24
+    },
+    {
+      "tag": "Component",
+      "shape": "RoundedBox",
+      "background": "#D9F2FF",
+      "color": "#102A43",
+      "stroke": "#7FB3D5",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Database",
+      "shape": "Cylinder",
+      "background": "#F2C94C",
+      "color": "#3D2C00",
+      "stroke": "#C89B1D",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "External",
+      "shape": "RoundedBox",
+      "background": "#D9D9D9",
+      "color": "#222222",
+      "stroke": "#8C8C8C",
+      "strokeWidth": 2,
+      "fontSize": 22,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Boundary",
+      "background": "#FFFFFF",
+      "color": "#334155",
+      "stroke": "#94A3B8",
+      "strokeWidth": 2,
+      "border": "Dashed"
+    },
+    {
+      "tag": "Deployment Node",
+      "shape": "RoundedBox",
+      "background": "#EDE9FE",
+      "color": "#312E81",
+      "stroke": "#8B5CF6",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Infrastructure Node",
+      "shape": "Hexagon",
+      "background": "#FFE8CC",
+      "color": "#7C2D12",
+      "stroke": "#F59E0B",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "Queue",
+      "shape": "Pipe",
+      "background": "#FECACA",
+      "color": "#7F1D1D",
+      "stroke": "#DC2626",
+      "strokeWidth": 2,
+      "fontSize": 22
+    },
+    {
+      "tag": "API",
+      "background": "#DBEAFE",
+      "color": "#1E3A8A",
+      "stroke": "#2563EB",
+      "strokeWidth": 3
+    },
+    {
+      "tag": "Critical",
+      "stroke": "#B91C1C",
+      "strokeWidth": 4
+    }
+  ],
+  "relationships": [
+    {
+      "tag": "Relationship",
+      "color": "#5B6B7A",
+      "thickness": 2,
+      "fontSize": 20,
+      "width": 200,
+      "opacity": 100,
+      "position": 50
+    },
+    {
+      "tag": "Synchronous",
+      "color": "#2563EB",
+      "thickness": 3,
+      "fontSize": 20,
+      "width": 200,
+      "style": "Solid"
+    },
+    {
+      "tag": "Asynchronous",
+      "color": "#DC2626",
+      "thickness": 3,
+      "fontSize": 20,
+      "width": 200,
+      "style": "Dashed"
+    }
+  ]
+}

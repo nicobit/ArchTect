@@ -1,0 +1,62 @@
+---
+title: Portal Guide
+description: Complete workflows and features for using the ArchTect portal day-to-day.
+sidebarTitle: Overview
+---
+
+<Note>
+**One interface, two shells:** the same portal runs inside VS Code and in the browser.
+</Note>
+
+## Everything in the editor, in one place
+
+This guide covers the full ArchTect interface — panels, canvas, Inspector, AI chat, and every workflow that ties them together.
+
+<CardGroup cols={2}>
+  <Card title="Start with the canvas" icon="pen-to-square" href="/portal-guide/canvas-and-dsl" />
+  <Card title="Take the UI tour" icon="compass" href="/getting-started/ui-tour" />
+</CardGroup>
+
+<Card title="Quick workflow">
+- Open a `.dsl` file
+- Select a view in the Views panel
+- Edit on the canvas or in the DSL editor
+- Export or generate documentation
+</Card>
+
+![ArchTect full-window view: left rail and panel, canvas, and Inspector](/images/screenshots/portal-guide/full-window-three-panel.png)
+
+## Interface areas
+
+| Area | What it covers |
+|---|---|
+| [Top Bar & Menus](/portal-guide/top-bar) | File, Edit, View, Architecture, Help menus and quick actions |
+| [Left Rail](/portal-guide/left-rail) | The icon strip that switches between panels |
+| [Explorer](/portal-guide/explorer) | Browsing model elements grouped by DSL groups |
+| [Views Panel](/portal-guide/views-panel) | Structure and Views tabs for navigating your workspace |
+| [Search](/portal-guide/search) | Finding elements, relationships, and views |
+| [Palette](/portal-guide/palette) | Drag-and-drop element creation and icon libraries |
+| [Canvas & DSL Editor](/portal-guide/canvas-and-dsl) | The diagram surface and the Monaco-based DSL editor |
+| [Inspector](/portal-guide/inspector) | Editing properties for the selected element, relationship, or view |
+| [AI Chat](/portal-guide/ai-chat) | In-app AI assistant for modeling |
+| [Status Bar](/portal-guide/status-bar) | Workspace name, problems, and cursor position |
+| [Command Palette](/portal-guide/command-palette) | Quick-access commands (VS Code) |
+| [Keyboard Shortcuts](/portal-guide/keyboard-shortcuts) | Full shortcut reference |
+| [Projects & Workspaces](/portal-guide/projects) | Creating, opening, and managing projects |
+
+## Common mistakes and troubleshooting
+
+| Problem | Solution |
+|---|---|
+| Changes not visible after edit | Canvas and DSL sync automatically — press `Ctrl+S` to apply and flush to disk |
+| Working in the wrong view | Check the active view name in the Views panel; DSL-authored views are tagged `DSL`, auto-generated ones `AUTO` |
+| Inspector changes not applied | Make sure the element is selected — some fields commit on blur, others need `Ctrl+S` |
+| View not showing expected elements | Check `include` / `exclude` rules in the view definition |
+| Layout looks different after re-opening | Check the layout engine set per view in the Inspector's Layout tab |
+
+## See also
+
+- [Getting Started](/getting-started) — Quick onboarding for new users.
+- [Modeling](/modeling) — Structurizr DSL syntax reference.
+- [Export & Documentation](/export) — Export formats and workflows.
+- [Troubleshooting](/troubleshooting) — Common issues and solutions.

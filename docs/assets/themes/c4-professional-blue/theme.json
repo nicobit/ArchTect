@@ -1,0 +1,41 @@
+{
+  "name": "Professional Blue",
+  "description": "Calm, trustworthy, enterprise-ready palette recommended as the default ArchTect theme. Same semantic role -> color mapping (Person/System/External/Container/Component/Database/Queue/Boundary) as the other curated palettes, so switching between them never changes what a color means.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person", "background": "#E8F0FE", "color": "#243550", "stroke": "#4F6B95", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External Person",  "shape": "Person", "background": "#E8F0FE", "color": "#243550", "stroke": "#4F6B95", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Software System", "shape": "Box", "background": "#2563A6", "color": "#FFFFFF", "stroke": "#174978", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "External",                        "background": "#E2E8F0", "color": "#334155", "stroke": "#64748B", "strokeWidth": 2, "border": "Dashed", "opacity": 70 },
+
+    { "tag": "Container",   "shape": "RoundedBox", "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Application", "shape": "RoundedBox", "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "WebApp",      "shape": "WebBrowser",           "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "MobileApp",   "shape": "MobileDevicePortrait", "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "Api",         "shape": "Hexagon",              "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "Worker",      "shape": "RoundedBox",           "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "Database",    "shape": "Cylinder",             "background": "#D9F0EB", "color": "#204E46", "stroke": "#438477", "strokeWidth": 2 },
+    { "tag": "Cache",       "shape": "RoundedBox",           "background": "#D9F0EB", "color": "#204E46", "stroke": "#438477", "strokeWidth": 2 },
+    { "tag": "MessageBroker", "shape": "Pipe",               "background": "#EDE7F6", "color": "#453A61", "stroke": "#74649A", "strokeWidth": 2 },
+    { "tag": "Storage",     "shape": "Folder",               "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "Web Browser", "shape": "WebBrowser",           "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+    { "tag": "Mobile App",  "shape": "MobileDeviceLandscape", "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+
+    { "tag": "Component", "shape": "RoundedBox", "background": "#F0F6FC", "color": "#263B50", "stroke": "#7A9BBC", "strokeWidth": 2, "border": "Solid" },
+    { "tag": "Code",      "shape": "RoundedBox", "background": "#F0F6FC", "color": "#263B50", "stroke": "#7A9BBC", "strokeWidth": 2 },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox", "background": "#F8FAFC", "color": "#475569", "stroke": "#94A3B8", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox", "background": "#F8FAFC", "color": "#475569", "stroke": "#94A3B8", "strokeWidth": 1, "border": "Dashed" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox", "background": "#F8FAFC", "color": "#475569", "stroke": "#94A3B8", "strokeWidth": 1 },
+
+    { "tag": "Software System Instance", "shape": "Box",        "background": "#2563A6", "color": "#FFFFFF", "stroke": "#174978", "strokeWidth": 2 },
+    { "tag": "Container Instance",       "shape": "RoundedBox", "background": "#DCEBFA", "color": "#1E3A5F", "stroke": "#4F81B5", "strokeWidth": 2 },
+
+    { "tag": "Robot",   "shape": "Robot",   "background": "#E8F0FE", "color": "#243550", "stroke": "#4F6B95", "strokeWidth": 2 },
+    { "tag": "Circle",  "shape": "Circle",  "background": "#2563A6", "color": "#FFFFFF", "stroke": "#174978", "strokeWidth": 2 },
+    { "tag": "Ellipse", "shape": "Ellipse", "background": "#2563A6", "color": "#FFFFFF", "stroke": "#174978", "strokeWidth": 2 }
+  ],
+  "relationships": [
+    { "tag": "Relationship", "color": "#475569", "thickness": 2, "fontSize": 12, "opacity": 100 }
+  ]
+}

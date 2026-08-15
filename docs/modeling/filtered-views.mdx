@@ -1,0 +1,87 @@
+---
+title: Filtered Views (DSL)
+description: DSL syntax for creating tag-based filtered subsets of existing views.
+---
+
+Filtered views create a subset of an existing view by including or excluding elements based on their tags.
+
+## Basic syntax
+
+```dsl
+filtered baseViewKey include "Tag1,Tag2" {
+  title "Filtered View Title"
+  description "Optional description"
+}
+```
+
+Or to exclude:
+
+```dsl
+filtered baseViewKey exclude "Internal" {
+  title "External Components Only"
+}
+```
+
+## Parameters
+
+| Parameter | Description |
+|---|---|
+| `baseViewKey` | The key of the view to filter |
+| `include` / `exclude` | The filter mode |
+| `"Tag1,Tag2"` | Comma-separated list of tags to match |
+
+## How filtering works
+
+- **Include mode** — Only elements with at least one of the specified tags are shown.
+- **Exclude mode** — Elements with any of the specified tags are hidden; everything else is shown.
+- Relationships are displayed only when both their source and target are visible after filtering.
+
+## Example
+
+Given a system context view with elements tagged `Frontend`, `Backend`, and `Database`:
+
+```dsl
+// Base view
+systemContext mySystem "FullContext" {
+  include *
+  autoLayout
+}
+
+// Show only frontend elements
+filtered "FullContext" include "Frontend" {
+  title "Frontend Components"
+}
+
+// Hide internal infrastructure
+filtered "FullContext" exclude "Infrastructure" {
+  title "Business Services"
+}
+```
+
+## Inspector properties
+
+In the UI, the Inspector for a filtered view shows:
+
+- **Base view key** — Which view the filter applies to
+- **Filter mode** — Include or exclude
+- **Tag list** — Tags used for filtering
+- **Title and description**
+- **Auto layout** — On/off and direction
+- **Layout engine** — Default, Graphviz, Dagre, or ELK
+- **Themes** — Theme list and custom URLs
+
+## Base view visibility
+
+When a filtered view is defined for a base view, the base view may be hidden from the Views panel. This is expected behavior in Structurizr-compatible rendering.
+
+## Tips
+
+- **Use meaningful tags** — Tags like `Frontend`, `Backend`, `External`, `Critical`, `PII` make filters self-documenting.
+- **Start with include** — Include mode is usually clearer and more predictable than exclude mode.
+- **Combine with documentation** — Filtered views work well in arc42 documentation to provide focused perspectives.
+
+## See also
+
+- [Views](/modeling/views) — Overview of all view types
+- [DSL Basics](/modeling/dsl-basics) — Tags and element definitions
+- [Filtered Views (Portal Guide)](/portal-guide/views-panel) — Working with filtered views in the UI

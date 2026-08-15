@@ -1,0 +1,38 @@
+---
+title: File Types
+description: File extensions and project structure used by ArchTect.
+---
+
+ArchTect uses a small set of files to store your architecture model, layout, and artifacts.
+
+## Core files
+
+| File | Purpose | Required |
+|---|---|---|
+| `workspace.dsl` | The main model file containing your Structurizr DSL | Yes |
+| `workspace.json` | Stores view layouts, manual positions, and editor state | Auto-created |
+
+## Supported extensions
+
+| Extension | Description |
+|---|---|
+| `.dsl` | Structurizr DSL workspace files — can be opened directly in ArchTect |
+| `.nbc4` | ArchTect native diagram files |
+
+## Project structure
+
+A typical ArchTect project looks like this:
+
+```
+my-architecture/
+  workspace.dsl       # Your architecture model (DSL source of truth)
+  workspace.json      # Layout data and editor state (auto-managed)
+  docs/               # Generated documentation and exported artifacts
+```
+
+## Notes
+
+- **`workspace.dsl`** is the source of truth for your architecture model. This is the file you should version-control and review.
+- **`workspace.json`** stores layout positions and editor state. It is created automatically when you make manual layout adjustments. You can version-control it to preserve layout across team members.
+- **`docs/`** is an optional folder for generated documentation or exported images. It is created by the `New Project` wizard.
+- Both `.dsl` and `.nbc4` files can be opened via right-click → **ArchTect: Open with ArchTect** in VS Code, or via the Command Palette.

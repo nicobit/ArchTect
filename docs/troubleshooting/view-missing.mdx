@@ -1,0 +1,46 @@
+---
+title: Missing Views
+description: Troubleshooting views that don't appear in the Views panel.
+---
+
+If a view doesn't appear in the Views panel, check the following:
+
+## Common causes
+
+### View not defined in DSL
+
+Make sure the view exists inside the `views { }` block of your workspace:
+
+```dsl
+views {
+  systemContext mySystem "MyView" {
+    include *
+    autoLayout
+  }
+}
+```
+
+### Duplicate view key
+
+Each view must have a unique key. If two views share the same key, only one will appear. Rename the duplicate:
+
+```dsl
+views {
+  systemContext mySystem "ContextView" { ... }
+  container mySystem "ContainerView" { ... }
+}
+```
+
+### Filtered view hiding the base view
+
+When a filtered view is defined for a base view, the base view may be hidden. This is expected behavior in Structurizr-compatible rendering. The filtered view replaces the base view in the panel.
+
+### View scope doesn't match model
+
+A `container` view scoped to a software system that has no containers defined will appear empty or may not render. Make sure the scoped element has the expected children.
+
+## Still not seeing your view?
+
+1. Open the DSL Editor tab and search for your view definition.
+2. Check for syntax errors that might prevent the view from being parsed.
+3. Try adding `autoLayout` and `include *` to the view to ensure it has content.

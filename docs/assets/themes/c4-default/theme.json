@@ -1,0 +1,39 @@
+{
+  "name": "C4 Default",
+  "description": "Built-in default C4 theme. Shape-only — assigns canonical C4 shapes by tag with no color overrides.",
+  "elements": [
+    { "tag": "Person",           "shape": "Person" },
+    { "tag": "External Person",  "shape": "Person",               "border": "dashed", "opacity": 70 },
+
+    { "tag": "Software System",          "shape": "Box" },
+    { "tag": "External",                                           "border": "dashed", "opacity": 70 },
+
+    { "tag": "Container",        "shape": "RoundedBox" },
+    { "tag": "Application",      "shape": "RoundedBox" },
+    { "tag": "WebApp",           "shape": "WebBrowser" },
+    { "tag": "MobileApp",        "shape": "MobileDevicePortrait" },
+    { "tag": "Api",              "shape": "Hexagon" },
+    { "tag": "Worker",           "shape": "RoundedBox" },
+    { "tag": "Database",         "shape": "Cylinder" },
+    { "tag": "Cache",            "shape": "RoundedBox" },
+    { "tag": "MessageBroker",    "shape": "Pipe" },
+    { "tag": "Storage",          "shape": "Folder" },
+    { "tag": "Web Browser",      "shape": "WebBrowser" },
+    { "tag": "Mobile App",       "shape": "MobileDeviceLandscape" },
+
+    { "tag": "Component",        "shape": "RoundedBox" },
+    { "tag": "Code",             "shape": "RoundedBox" },
+
+    { "tag": "Deployment Environment", "shape": "RoundedBox" },
+    { "tag": "Deployment Node",        "shape": "RoundedBox" },
+    { "tag": "Infrastructure Node",    "shape": "RoundedBox" },
+
+    { "tag": "Software System Instance", "shape": "Box" },
+    { "tag": "Container Instance",       "shape": "RoundedBox" },
+
+    { "tag": "Robot",   "shape": "Robot" },
+    { "tag": "Circle",  "shape": "Circle" },
+    { "tag": "Ellipse", "shape": "Ellipse" }
+  ],
+  "relationships": []
+}

@@ -1,0 +1,62 @@
+---
+title: Ilograph Export
+description: Export architecture models to Ilograph for interactive 3D exploration.
+---
+
+Export your architecture model to [Ilograph](https://www.ilograph.com/) YAML format for interactive, multi-perspective architecture exploration.
+
+## Why Ilograph
+
+- **Interactive exploration** — Ilograph renders architecture as an interactive, explorable diagram where users can drill into levels and perspectives.
+- **Multi-perspective views** — Ilograph supports multiple perspectives from the same model, similar to C4 zoom levels.
+- **Shareable** — Publish Ilograph diagrams as interactive web pages that stakeholders can explore without tools.
+
+## How to export
+
+1. Open your workspace in ArchTect.
+2. Click **Export → Ilograph** in the toolbar.
+3. The Ilograph YAML file is generated and available for download.
+
+## Example output
+
+```yaml
+resources:
+  - name: User
+    type: Person
+    description: A user of the system
+  - name: My System
+    type: Software System
+    description: The system being modeled
+    children:
+      - name: API
+        type: Container
+        description: REST API
+        technology: Node.js
+
+perspectives:
+  - name: System Context
+    relations:
+      - from: User
+        to: My System
+        label: Uses
+```
+
+## Using the output
+
+1. Go to [ilograph.com](https://www.ilograph.com/) and create a new diagram.
+2. Paste the exported YAML into the editor.
+3. Ilograph renders the interactive diagram.
+
+Alternatively, use the Ilograph CLI or VS Code extension for local rendering.
+
+<Note>
+**Model-level export**
+
+Ilograph export includes the entire model (all elements, relationships, and hierarchies), not just a single view. The Ilograph format supports its own perspective definitions which may differ from your Structurizr view definitions.
+</Note>
+
+## See also
+
+- [Mermaid](/export/mermaid) — Text-based Markdown export
+- [PlantUML](/export/plantuml) — Enterprise text-based export
+- [Export overview](/export) — All export formats

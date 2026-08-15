@@ -4,22 +4,51 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "docs/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.x'
+          node-version: 20
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install Mintlify CLI
+        run: npm install -g mintlify
 
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+      - name: Export static site
+        working-directory: docs
+        run: mintlify export --output ../site.zip
+
+      - name: Unpack export
+        run: |
+          mkdir -p _site
+          unzip -q site.zip -d _site
+
+      - name: Preserve custom domain
+        run: cp docs/CNAME _site/CNAME
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,46 @@
+---
+title: Structurizr DSL in ArchTect
+description: Core modeling concepts — elements, relationships, views, and DSL syntax.
+---
+
+ArchTect follows the [Structurizr DSL](https://structurizr.com/help/dsl) as its canonical modeling language. This section explains how the DSL behaves inside ArchTect and how models surface in the UI.
+
+## Core concepts
+
+| Concept | What it is | DSL keyword |
+|---|---|---|
+| **Person** | A human user of the system | `person` |
+| **Software System** | A top-level software system | `softwareSystem` |
+| **Container** | A deployable unit within a system (API, database, web app) | `container` |
+| **Component** | A structural building block within a container | `component` |
+| **Relationship** | A connection between elements | `->` |
+| **Group** | A named boundary around related elements | `group` |
+| **Deployment Node** | An infrastructure host or environment | `deploymentNode` |
+
+## View types
+
+| View type | Shows | Use case |
+|---|---|---|
+| **System Landscape** | All systems and people | High-level overview |
+| **System Context** | One system and its interactions | Scoping a single system |
+| **Container** | Containers within a system | Internal structure |
+| **Component** | Components within a container | Detailed design |
+| **Dynamic** | Interactions over time | Sequence/flow diagrams |
+| **Deployment** | Infrastructure and deployment | Operations and DevOps |
+| **Filtered** | Subset of another view | Focused communication |
+
+## Guides in this section
+
+- [DSL Basics](/modeling/dsl-basics) — Workspace structure and fundamental syntax
+- [Elements](/modeling/elements) — Person, Software System, Container, Component, Deployment Node
+- [Relationships](/modeling/relationships) — Defining and styling connections
+- [Groups, Tags & Properties](/modeling/groups-tags-properties) — Organizing and annotating your model
+- [Views](/modeling/views) — View types, scoping, and `include` / `exclude`
+- [Filtered Views](/modeling/filtered-views) — Creating filtered subsets of views
+- [Dynamic Views](/modeling/dynamic-views) — Modeling interactions and sequences
+- [Deployment Views](/modeling/deployment-views) — Infrastructure and deployment modeling
+
+## See also
+
+- [DSL Support Matrix](/reference/dsl-support) — What ArchTect supports from the full Structurizr DSL
+- [DSL Reference](/reference/dsl-reference) — Detailed syntax reference

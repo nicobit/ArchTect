@@ -1,0 +1,85 @@
+---
+
+---
+ArchTect is not a replacement grammar. Base syntax and semantics remain Structurizr DSL.
+
+Canonical base grammar: `frontend/src/lib/dsl/grammar.txt`.
+
+This file documents only ArchTect add-ons that are handled on top of the base grammar.
+
+## What Is ArchTect-Specific
+
+ArchTect-specific behavior in this area is primarily property-driven.
+
+### 1) Workspace property: `shape.pack`
+
+Selects a registered shape override pack used by runtime rendering.
+
+```dsl
+workspace "My Workspace" {
+  properties {
+    "shape.pack" "basic"
+  }
+}
+```
+
+Verified pack ids:
+- `basic` (default when omitted)
+- `light`
+- `professional`
+
+Fallback behavior:
+- `builtin` is runtime fallback behavior (used when no matching override pack is active).
+- Unknown pack ids safely fall back.
+
+### 2) View property: `compactMode`
+
+Custom ArchTect view property for denser rendering.
+
+```dsl
+views {
+  systemLandscape {
+    properties {
+      "compactMode" "true"
+    }
+    include *
+  }
+}
+```
+
+## What Is Not an ArchTect Extension
+
+These belong to base Structurizr DSL and should be treated as core grammar, not ArchTect extensions:
+- Model element declarations and relationships
+- Identifier assignment pattern (e.g. `api = softwareSystem "API"`)
+- Deployment modeling constructs such as `deploymentEnvironment`, `deploymentNode`, `infrastructureNode`
+- Standard view/property grammar such as `routing`
+
+## Guidance for AI Generation
+
+- Generate valid Structurizr DSL first.
+- Add ArchTect behavior only via verified add-on properties (`shape.pack`, `compactMode`).
+- Prefer `shape.pack = "basic"` unless a verified alternative is explicitly requested.
+- Do not invent new ArchTect keywords or unverified property names.
+
+## Identifier And Relationship Output Policy (Important)
+
+To keep generated DSL stable for parse/round-trip/export in this editor:
+
+- Default to flat identifier usage.
+- In flat mode, use single-token aliases in relationships (example: `webApp -> api`).
+- Do not emit dotted relationship endpoints such as `a.b -> c.d` unless hierarchical identifiers are explicitly enabled.
+- If dotted references are used anywhere, also emit:
+
+```dsl
+!identifiers hierarchical
+```
+
+- Do not mix styles in one output (avoid mixing flat aliases and dotted hierarchical paths for the same model).
+- Prefer explicit alias assignment for all model elements and reference those aliases consistently in:
+  - relationships
+  - view scopes
+  - include/exclude/animation identifiers
+
+Recommended default for AI-generated DSL:
+- Flat identifiers + explicit aliases + non-dotted relationships.

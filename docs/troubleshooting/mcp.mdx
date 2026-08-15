@@ -1,0 +1,35 @@
+---
+title: MCP Diagnostics
+description: Troubleshooting the embedded MCP server and its AI client connections.
+---
+
+## Checking server status
+
+Run `ArchTect: MCP Show Status` from the Command Palette to see whether the embedded MCP server is running and which transport/port it's using.
+
+## Quick fixes
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `@archtect` doesn't respond or errors | MCP server disabled or not running | Run `ArchTect: MCP Toggle Server`, then retry |
+| Claude Code can't see ArchTect tools | Client not configured | Run `ArchTect: MCP Configure Claude Code` |
+| Another MCP client can't connect | Client not configured, or port conflict | Run `ArchTect: MCP Configure Client`; check `archtect.mcp.port` isn't in use by something else |
+| SSE transport fails in extension host | `stdio` requested but unsupported in this mode | The extension automatically falls back to SSE on localhost — confirm `archtect.mcp.transport` and `archtect.mcp.port` settings |
+
+## Settings reference
+
+| Setting | Default |
+|---|---|
+| `archtect.mcp.enabled` | `true` |
+| `archtect.mcp.transport` | `sse` |
+| `archtect.mcp.port` | `33335` |
+| `archtect.mcp.diagramsDir` | `docs/diagrams` |
+
+## Still stuck?
+
+Run `ArchTect: Show Copilot Diagnostics` from the Command Palette to capture broader environment state, and see [Webview Issues](/troubleshooting/webview) if the problem seems to be the editor itself rather than the MCP connection.
+
+## See also
+
+- [MCP Server Integration](/vscode-extension/mcp)
+- [Copilot Chat Participant](/vscode-extension/copilot)

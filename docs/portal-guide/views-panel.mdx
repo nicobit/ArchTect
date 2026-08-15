@@ -1,0 +1,38 @@
+---
+title: Views Panel
+description: Navigating your workspace structure and views in ArchTect.
+---
+
+Open the Views panel from the [left rail](/portal-guide/left-rail). It has four sub-tabs.
+
+## Structure
+
+Shows the current view (the one open on the canvas), along with its `AUTO` or `CURRENT` status. This is the default sub-tab when the panel opens.
+
+## Views
+
+Lists every view in the workspace — both views you define explicitly in the DSL and views ArchTect derives automatically from your model:
+
+- Views tagged **DSL** are explicitly authored — they come from a `systemContext`, `container`, `component`, `dynamic`, `deployment`, or `filtered` block in your `views { }` section.
+- Views tagged **AUTO** are generated automatically so every element has a reasonable default view to open, even before you've written one yourself.
+
+![Views panel listing authored (DSL) and auto-generated views](/images/screenshots/getting-started/views-panel-list.png)
+
+Use the search box at the top to filter by name, and the **All / Authored / Generated** toggle to narrow the list. Click any entry to open it on the canvas.
+
+## Flows
+
+Lists dynamic views (interaction flows) defined in the workspace — see [Dynamic Views](/modeling/dynamic-views).
+
+## Deployments
+
+Lists deployment environments and their views — see [Deployment Views](/modeling/deployment-views).
+
+## Creating a view
+
+Click the **+** button at the top of the panel to create a new view. This opens a dialog to choose the view type and scope, and writes the corresponding block into your DSL.
+
+## See also
+
+- [Views (Modeling)](/modeling/views) — DSL syntax for each view type
+- [Canvas & DSL Editor](/portal-guide/canvas-and-dsl)

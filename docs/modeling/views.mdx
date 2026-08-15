@@ -1,0 +1,143 @@
+---
+title: Views
+description: View types, scoping, include/exclude rules, auto-layout, and view properties.
+---
+
+Views define what part of the model is shown and how it is laid out. Each view is a window into your architecture from a specific perspective.
+
+## View types
+
+| Type | DSL keyword | Scope | Purpose |
+|---|---|---|---|
+| System Landscape | `systemLandscape` | Entire workspace | All systems and people |
+| System Context | `systemContext` | One software system | System and its interactions |
+| Container | `container` | One software system | Internal containers |
+| Component | `component` | One container | Internal components |
+| Dynamic | `dynamic` | System or container | Ordered interactions |
+| Deployment | `deployment` | Environment + system | Infrastructure topology |
+| Filtered | `filtered` | Another view | Tag-based subset |
+| Custom | `custom` | None (free-form) | Arbitrary elements |
+| Image | `image` | N/A | Static image view |
+
+## Defining views
+
+All views are defined inside the `views { }` block:
+
+```dsl
+views {
+  systemLandscape "Landscape" {
+    include *
+    autoLayout
+  }
+
+  systemContext mySystem "Context" {
+    include *
+    autoLayout
+  }
+
+  container mySystem "Containers" {
+    include *
+    autoLayout
+  }
+}
+```
+
+## View keys
+
+Every view has a unique **key** (the string after the scope element). Keys are stable identifiers used for:
+
+- Linking to views in documentation
+- Stable export filenames
+- Governance and review workflows
+
+```dsl
+systemContext mySystem "MyViewKey" {
+  ...
+}
+```
+
+## Include and exclude
+
+Control which elements appear in a view:
+
+### Include all
+
+```dsl
+include *
+```
+
+### Include specific elements
+
+```dsl
+include user
+include mySystem
+include user -> mySystem
+```
+
+### Exclude elements
+
+```dsl
+exclude internalService
+exclude user -> legacySystem
+```
+
+### Include by expression
+
+```dsl
+include element.tag==External
+```
+
+## Auto layout
+
+Enable automatic layout positioning:
+
+```dsl
+autoLayout
+```
+
+With direction:
+
+```dsl
+autoLayout lr    // left to right
+autoLayout tb    // top to bottom (default)
+autoLayout bt    // bottom to top
+autoLayout rl    // right to left
+```
+
+Elements can be dragged to reposition them on the canvas.
+
+## View properties
+
+Views support titles, descriptions, and properties:
+
+```dsl
+systemContext mySystem "Context" {
+  include *
+  autoLayout
+  title "System Context Diagram"
+  description "Shows the system and its external interactions"
+  properties {
+    "structurizr.sort" "type"
+  }
+}
+```
+
+## Default view
+
+Mark a view as the default (opens first when the workspace is loaded):
+
+```dsl
+systemContext mySystem "Context" {
+  include *
+  autoLayout
+  default
+}
+```
+
+## See also
+
+- [DSL Basics](/modeling/dsl-basics) — Workspace structure and element types
+- [Dynamic Views](/modeling/dynamic-views) — Ordered interaction views
+- [Filtered Views](/modeling/filtered-views) — Tag-based view subsets
+- [Deployment Views](/modeling/deployment-views) — Infrastructure views
+- [Views Panel (Portal Guide)](/portal-guide/views-panel) — UI guide for working with views

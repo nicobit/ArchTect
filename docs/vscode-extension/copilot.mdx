@@ -1,0 +1,33 @@
+---
+title: Copilot Chat Participant
+description: Using @archtect in GitHub Copilot Chat for architecture-aware assistance.
+---
+
+The extension registers `@archtect` as a GitHub Copilot Chat participant — an "architecture-aware assistant for the current DSL, visible view, and ArchTect MCP tools," in the extension's own words. Use it directly in the Copilot Chat panel, no separate window needed.
+
+## Subcommands
+
+| Command | What it does |
+|---|---|
+| `@archtect /tools` | List the ArchTect MCP tools exposed by the extension |
+| `@archtect /context` | Show the current DSL, visible view, and active ArchTect tab context |
+| `@archtect /route` | Recommend the most appropriate ArchTect MCP tool and arguments for a natural-language request |
+
+You can also just describe what you want in plain language after `@archtect` — it's sticky, meaning Copilot keeps routing follow-up messages in the same chat to it without needing to re-type `@archtect` each time.
+
+## Diagnostics
+
+If `@archtect` isn't responding as expected, run `ArchTect: Show Copilot Diagnostics` from the Command Palette. It opens a document with the webview's environment state — useful for filing a bug report or checking whether the extension can see your open workspace.
+
+## Relationship to MCP
+
+The chat participant's tool access is powered by the same [embedded MCP server](/vscode-extension/mcp) other MCP clients (like Claude Code) connect to — `@archtect /tools` and an external MCP client's tool list reflect the same underlying capabilities.
+
+## Relationship to in-app AI Chat
+
+The portal also has its own [AI Chat panel](/portal-guide/ai-chat), available in both VS Code and the browser app. Use whichever fits your workflow — Copilot Chat if you're already there for code, the in-app panel if you want to stay inside the ArchTect editor (including in the browser, where Copilot isn't available).
+
+## See also
+
+- [MCP Server Integration](/vscode-extension/mcp)
+- [AI Chat](/portal-guide/ai-chat)

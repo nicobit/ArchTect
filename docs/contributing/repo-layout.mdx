@@ -1,0 +1,27 @@
+---
+title: Repository Layout
+description: How frontend, extension, backend, and native-scanner relate to each other.
+---
+
+This is not an npm workspace monorepo — each top-level project manages its own dependencies independently. No root `package.json` ties them together.
+
+| Directory | What it is |
+|---|---|
+| `frontend/` | The React + TypeScript + Vite portal — the actual editor UI. Builds standalone (browser app) and as a VS Code webview bundle. |
+| `extension/` | The VS Code extension (package id `c4archtect`). Hosts `frontend/`'s build inside a webview; adds Command Palette commands, the Copilot chat participant, and the embedded MCP server. |
+| `backend/` | An optional FastAPI service powering the natural-language "Generate" button in the AI Chat panel. Without it running, the frontend falls back to a mock response. |
+| `native-scanner/` | A separate Node/TypeScript package — a workspace-aware technology adapter scanner used for project architecture generation/inference. |
+| `docs/` | This documentation site (MkDocs + Material). |
+| `internal-docs/` | Internal implementation notes, dated plans/specs, and bug/feature tracking — not published, not part of `docs_dir`. |
+| `samples/` | Example `.dsl` files. |
+| `archtect-static-website/` | A separate marketing/landing site, distinct from this documentation. |
+
+## How frontend and extension relate
+
+`extension/` doesn't reimplement the editor — it builds `frontend/` with a dedicated Vite config (`vite.config_extension.ts`) and copies the output into `extension/media/`, then serves that into a VS Code webview. See [Webview Architecture](/vscode-extension/webview).
+
+## See also
+
+- [Running the Frontend](/contributing/running-frontend)
+- [Building the Extension](/contributing/building-extension)
+- [Testing](/contributing/testing)

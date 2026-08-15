@@ -1,0 +1,22 @@
+---
+title: Webview Architecture
+description: How the ArchTect VS Code extension hosts the portal frontend.
+---
+
+The VS Code extension doesn't reimplement the portal — it hosts the same React frontend used by the browser app inside a VS Code **webview**, registered as a custom editor for `.dsl` and `.nbc4` files.
+
+## How it's built and served
+
+- The frontend (`frontend/`) is built once and its output copied into `extension/media/`.
+- The extension serves those built assets into the webview at runtime; it does not run a dev server inside VS Code.
+- If `extension/media/` is missing or stale relative to the frontend source, the webview opens blank — see [VS Code Webview Issues](/troubleshooting/webview) for how to rebuild it.
+
+## Custom editor registration
+
+The extension registers `archtect.editor` as a custom editor for both `*.nbc4` (default priority) and `*.dsl` (option priority) files, with `retainContextWhenHidden` enabled so the canvas state survives switching tabs.
+
+## See also
+
+- [VS Code Webview Issues](/troubleshooting/webview) — Rebuilding the bundle and debugging blank editors
+- [Repository Layout](/contributing/repo-layout) — Where `frontend/` and `extension/` live relative to each other
+- [Building the Extension](/contributing/building-extension)
