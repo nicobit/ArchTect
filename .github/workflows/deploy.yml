@@ -43,13 +43,8 @@ jobs:
           mkdir -p _site
           unzip -q site.zip -d _site
 
-      - name: Rewrite absolute paths for the /ArchTect/ subpath
-        run: |
-          find _site -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' \) -print0 \
-            | xargs -0 sed -i \
-                -e 's#\(href\|src\)="/#\1="/ArchTect/#g' \
-                -e 's#url(/#url(/ArchTect/#g' \
-                -e 's#"/_next/#"/ArchTect/_next/#g'
+      - name: Preserve custom domain
+        run: cp docs/CNAME _site/CNAME
 
       - uses: actions/upload-pages-artifact@v3
         with:
