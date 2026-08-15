@@ -43,6 +43,19 @@ jobs:
           mkdir -p _site
           unzip -q site.zip -d _site
 
+      - name: Fix group index pages
+        run: |
+          # mintlify export writes a group's own "index" page (e.g. getting-started/index)
+          # to getting-started/index/index.html instead of getting-started/index.html,
+          # which breaks the URL the group's own link (e.g. /getting-started/) resolves to.
+          find _site -type d -name index -path '*/index' | while read -r dir; do
+            parent="$(dirname "$dir")"
+            if [ -f "$dir/index.html" ] && [ "$parent" != "_site" ]; then
+              mv "$dir/index.html" "$parent/index.html"
+              rm -rf "$dir"
+            fi
+          done
+
       - name: Preserve custom domain
         run: cp docs/CNAME _site/CNAME
 
