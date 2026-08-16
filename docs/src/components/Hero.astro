@@ -1,0 +1,15 @@
+---
+import Default from '@astrojs/starlight/components/Hero.astro';
+
+const isSplash = Astro.locals.starlightRoute.entry.data.template === 'splash';
+---
+
+{isSplash && (
+	<div class="hero-eyebrow">
+		<span class="hero-dot" />
+		Open source and architect first
+	</div>
+)}
+<div class:list={{ 'hero-imageless': isSplash && !Astro.locals.starlightRoute.entry.data.hero?.image }}>
+	<Default {...Astro.props}><slot /></Default>
+</div>

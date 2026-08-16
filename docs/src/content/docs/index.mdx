@@ -1,0 +1,234 @@
+---
+title: Draw it. Write it. Ask AI.
+description: Documentation for ArchTect — a visual, AI-assisted editor for Structurizr DSL.
+template: splash
+editUrl: false
+tableOfContents: false
+pagefind: false
+hero:
+  title: Draw it. Write it. Ask AI.<br />One architecture, always in sync.
+  tagline: ArchTect is a visual, AI-assisted IDE for Structurizr DSL. Design on the canvas, write the DSL by hand, or prompt an AI to model it — every change stays in sync across all three.
+  actions:
+    - text: Try ArchTect →
+      link: /getting-started/
+      variant: primary
+    - text: Explore the docs
+      link: /overview/
+      variant: secondary
+---
+
+import { Tabs, TabItem, CardGrid, Card } from '@astrojs/starlight/components';
+
+<div class="frame frame-hero">
+  ![Animated architecture diagram showing the BigBank system landscape with live data flow between systems](/assets/vscode/bigbank-animated.svg)
+</div>
+
+<div class="section">
+  <div class="frame dsl-demo">
+    <div class="mockup-titlebar">
+      <div class="dots">
+        <span class="dot dot-red" /><span class="dot dot-yellow" /><span class="dot dot-green" />
+      </div>
+      <span class="mockup-filename">workspace.dsl</span>
+      <span class="mockup-badge">Live preview</span>
+    </div>
+    <div class="mockup-grid">
+      <div class="mockup-code">
+
+```dsl
+workspace "My First Architecture" {
+  model {
+    user = person "User"
+    system = softwareSystem "My System"
+    db = softwareSystem "Database"
+
+    user -> system "Uses"
+    system -> db "Reads from and writes to"
+  }
+
+  views {
+    systemContext system "SystemContext" {
+      include *
+      autoLayout
+    }
+  }
+}
+```
+
+  </div>
+      <div class="mockup-preview">
+        ![System Context view after adding a Database element and a "Reads from and writes to" relationship](/images/screenshots/getting-started/first-project-with-database.png)
+      </div>
+    </div>
+  </div>
+  <p class="caption">Every diagram is a faithful, deterministic projection of the DSL — stable, repeatable, and governance-ready.</p>
+</div>
+
+<div class="section split">
+  <div>
+    <div class="eyebrow">01 · Bidirectional by design</div>
+    <h2>Edit the canvas.<br />Or edit the DSL.</h2>
+    <p>Drag a node on the canvas and the DSL updates underneath it. Type in the DSL and the canvas re-renders instantly. Edit from whichever surface is most productive — nothing is generated once and abandoned.</p>
+    <a href="/portal-guide/canvas-and-dsl/" class="link-arrow">Explore the canvas and DSL editor →</a>
+  </div>
+  <div class="frame frame-short">
+    ![Inspector showing the System Context view's properties, including "Defined in DSL" origin](/images/screenshots/getting-started/first-project-inspector.png)
+  </div>
+</div>
+
+<div class="section split">
+  <div class="frame frame-short order-first-mobile">
+    ![AI Chat panel](/images/screenshots/portal-guide/ai-chat-panel.png)
+  </div>
+  <div>
+    <div class="eyebrow">02 · Agent-ready</div>
+    <h2>AI that sees your<br />whole model.</h2>
+    <p>An in-app AI chat and a VS Code Copilot chat participant understand your workspace — the model, the active view, the DSL — through an embedded MCP server. Ask for a new container, a deployment topology, or an arc42 write-up, and review the change before it lands.</p>
+    <a href="/vscode-extension/mcp/" class="link-arrow">Set up the MCP server →</a>
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow center">03 · One application model</div>
+  <h2 class="center">Every view type has its own rules.</h2>
+  <p class="center lead">System Context, Container, Component, Dynamic, Deployment, and Filtered views aren't interchangeable boxes-and-arrows — each has its own semantics, and stable view keys keep reviews and diffs meaningful over time.</p>
+
+  <div class="checklist">
+    <div class="checklist-item">
+      <span class="checklist-num">01</span>
+      <div>
+        <h3>System Context &amp; Container</h3>
+        <p>See the system boundary, external actors, and the services inside it.</p>
+        <a href="/modeling/views/" class="link-arrow">Explore views →</a>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <span class="checklist-num">02</span>
+      <div>
+        <h3>Dynamic views</h3>
+        <p>Model runtime interaction flows as ordered steps between elements.</p>
+        <a href="/modeling/dynamic-views/" class="link-arrow">Learn about dynamic views →</a>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <span class="checklist-num">03</span>
+      <div>
+        <h3>Deployment views</h3>
+        <p>Map containers onto infrastructure nodes and environments.</p>
+        <a href="/modeling/deployment-views/" class="link-arrow">Explore deployment views →</a>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <span class="checklist-num">04</span>
+      <div>
+        <h3>Filtered views</h3>
+        <p>Scope any view down by tag or rule without duplicating the model.</p>
+        <a href="/modeling/filtered-views/" class="link-arrow">Explore filtered views →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section center">
+  <div class="eyebrow center">04 · Local first, wherever you work</div>
+  <h2>One workspace. Same fidelity.</h2>
+  <p class="lead">Use the same <code>.dsl</code> workspace as a VS Code extension or straight in the browser — no server, no account.</p>
+
+  <Tabs>
+    <TabItem label="VS Code extension">
+      Open a `.dsl` file and the ArchTect icon appears in the editor toolbar. The canvas opens alongside your DSL, backed by the same MCP server your AI agents use.
+
+      [Getting started: VS Code extension →](/getting-started/vscode-extension/)
+    </TabItem>
+    <TabItem label="Browser app">
+      No install. Open the web app, load or paste a `.dsl` file, and get the same editor, views, and export pipeline.
+
+      [Getting started: Browser app →](/getting-started/browser-app/)
+    </TabItem>
+  </Tabs>
+</div>
+
+<div class="section split">
+  <div>
+    <div class="eyebrow">05 · Themes included</div>
+    <h2>Look like AWS, Azure,<br />or plain C4.</h2>
+    <p>Apply a cloud provider's icon set or stick to classic C4 shapes — per view, without touching the underlying model.</p>
+    <a href="/editing/themes/" class="link-arrow">Explore themes →</a>
+  </div>
+  <div class="frame">
+    ![Container view styled with AWS theme icons](/images/screenshots/editing/aws-theme-icons.png)
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow center">06 · Export everywhere</div>
+  <h2 class="center">Ship the diagram, not just the model.</h2>
+  <p class="center lead">Every format your team already uses, generated directly from the DSL — plus full arc42 documentation.</p>
+
+  <CardGrid>
+    <Card title="Images" icon="seti:image">PNG and SVG for docs and presentations.</Card>
+    <Card title="Mermaid" icon="seti:mdx">GitHub-native and Notion-native diagrams.</Card>
+    <Card title="PlantUML" icon="seti:plain">Confluence, GitLab, and wiki integration.</Card>
+    <Card title="draw.io" icon="pencil">Editable diagrams.net files.</Card>
+    <Card title="Ilograph" icon="puzzle">Interactive, explorable architecture.</Card>
+    <Card title="arc42 docs" icon="open-book">Full documentation generated from your model.</Card>
+  </CardGrid>
+</div>
+
+<div class="section">
+  <div class="eyebrow center">07 · Why ArchTect</div>
+  <h2 class="center">Precision and clarity,<br />without the trade-off.</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="quote-mark">"</div>
+      <p class="compare-title">Compared to freeform diagramming</p>
+      <p>Hand-drawn diagrams look great but drift from reality — there's no shared model behind them, so nothing keeps them honest. ArchTect is always drawing a live view of one underlying model, not a picture someone has to remember to update.</p>
+    </div>
+    <div class="compare-card">
+      <div class="quote-mark">"</div>
+      <p class="compare-title">Compared to code-only DSL tools</p>
+      <p>Structurizr and C4-DSL already solve drift by generating views from a single model — but authoring is text-only. ArchTect adds a visual, bidirectional editor on top, so you can draw or write, and the model stays just as deterministic.</p>
+    </div>
+  </div>
+
+  <p class="center" style="margin-top: 2rem;">
+    <a href="/why-archtect/" class="link-arrow">Learn more about why ArchTect →</a>
+  </p>
+</div>
+
+<div class="section center closing-cta">
+  <h2>Start building without friction.</h2>
+  <p class="lead">Install the VS Code extension, open the browser app, or bring an existing Structurizr DSL workspace — same fidelity everywhere.</p>
+  <div class="hero-actions">
+    <a href="/getting-started/" class="btn btn-primary">Getting Started →</a>
+    <a href="/overview/" class="btn btn-secondary">Explore the docs</a>
+    <a href="https://github.com/nicobit/Archtect" class="btn btn-secondary">View on GitHub</a>
+  </div>
+</div>
+
+<footer class="landing-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-title">ArchTect</div>
+      <p>A visual, AI-assisted way to model, edit, and document software architecture as Structurizr DSL.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Resources</div>
+      <ul>
+        <li><a href="/reference/">Reference</a></li>
+        <li><a href="/contributing/">Contributing guide</a></li>
+        <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/troubleshooting/">Troubleshooting</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Community</div>
+      <ul>
+        <li><a href="https://github.com/nicobit/Archtect">GitHub</a></li>
+        <li><a href="https://github.com/nicobit/Archtect/issues">Report an issue</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-copyright">© 2026 ArchTect</div>
+</footer>

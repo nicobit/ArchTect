@@ -1,0 +1,13 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+{/* Applied before the body paints, so the sidebar renders already collapsed
+    instead of flashing expanded-then-collapsing on every navigation. */}
+<script is:inline>
+	if (localStorage.getItem('archtect-sidebar-collapsed') === 'true') {
+		document.documentElement.classList.add('sidebar-is-collapsed');
+	}
+</script>
+
+<Default {...Astro.props} />

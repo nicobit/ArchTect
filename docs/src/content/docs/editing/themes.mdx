@@ -1,0 +1,119 @@
+---
+title: Themes
+description: Configure element and relationship styles using themes and custom style blocks.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Themes control the visual style of elements and relationships in your views. They can set colors, shapes, icons, and other visual properties.
+
+## How themes work
+
+Themes apply styles based on **tags**. When an element or relationship has a tag that matches a theme's style definition, that style is applied.
+
+Multiple themes can be combined. When themes conflict, **later themes take precedence** — the last theme in the list wins.
+
+## Using themes
+
+### Built-in theme
+
+```dsl
+views {
+  theme default
+}
+```
+
+### External theme URLs
+
+Structurizr maintains a library of themes for cloud providers and technologies:
+
+```dsl
+views {
+  themes https://static.structurizr.com/themes/amazon-web-services-2023.01.31/theme.json
+  themes https://static.structurizr.com/themes/microsoft-azure-2023.01.24/theme.json
+}
+```
+
+These themes provide icons and colors for recognized element tags (e.g., elements tagged `Amazon Web Services - Lambda` get the Lambda icon).
+
+![Container view with AWS theme applied — Lambda, S3, and RDS icons on tagged elements](/images/screenshots/editing/aws-theme-icons.png)
+
+### Multiple themes
+
+```dsl
+views {
+  theme default
+  themes https://static.structurizr.com/themes/amazon-web-services-2023.01.31/theme.json
+}
+```
+
+<Aside type="note">
+Later themes override earlier ones where styles conflict.
+</Aside>
+
+## Custom styles
+
+In addition to (or instead of) themes, define custom styles in the `styles` block:
+
+```dsl
+views {
+  styles {
+    element "Person" {
+      shape Person
+      background "#08427b"
+      color "#ffffff"
+    }
+    element "Database" {
+      shape Cylinder
+      background "#438dd5"
+    }
+    relationship "Relationship" {
+      color "#707070"
+      thickness 2
+    }
+  }
+}
+```
+
+<Aside type="note">
+Custom styles defined in the `styles` block take effect **after** themes, so they can override theme defaults.
+</Aside>
+
+## Supported element style properties
+
+| Property | Description |
+|---|---|
+| `shape` | Element shape (`Box`, `Person`, `Cylinder`, `Pipe`, etc.) |
+| `icon` | URL to an icon image |
+| `width` / `height` | Element dimensions |
+| `background` | Fill color (hex) |
+| `color` / `colour` | Text color (hex) |
+| `stroke` | Border color (hex) |
+| `strokeWidth` | Border thickness |
+| `border` | Border style (`solid`, `dashed`, `dotted`) |
+| `opacity` | Element opacity (0–100) |
+
+## Supported relationship style properties
+
+| Property | Description |
+|---|---|
+| `color` / `colour` | Line color (hex) |
+| `thickness` | Line thickness |
+| `opacity` | Line opacity (0–100) |
+| `routing` | Line routing (`Direct`, `Orthogonal`) |
+| `style` | Line style (`dashed`) |
+
+## In the Inspector
+
+When a view is selected (click canvas background), the Themes section lets you:
+
+- Add new theme URLs
+- Remove themes
+- Reorder themes to control precedence
+- Apply theme presets
+
+## See also
+
+- [View Settings](/editing/view-settings) — Layout and view configuration
+- [DSL Support Matrix](/reference/dsl-support) — Supported style properties
+- [DSL Basics](/modeling/dsl-basics) — Styles syntax

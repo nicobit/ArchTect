@@ -1,0 +1,51 @@
+---
+title: PNG and SVG Export
+description: Export diagrams as raster (PNG) or vector (SVG) images.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Export the currently active view as an image for use in documents, presentations, or web pages.
+
+## PNG export
+
+PNG is a raster image format — good for presentations, emails, and embedding in documents.
+
+**How to export:**
+
+1. Open the view you want to export.
+2. Click **Export → PNG** in the toolbar, or use the Command Palette: `ArchTect: Export PNG`.
+3. The PNG file is downloaded (browser) or saved to the project folder (VS Code).
+
+## SVG export
+
+SVG is a vector format — scalable to any size without quality loss. Ideal for documentation sites and print.
+
+**How to export:**
+
+1. Open the view you want to export.
+2. Click **Export → SVG** in the toolbar, or use the Command Palette: `ArchTect: Export SVG`.
+3. The SVG file is downloaded or saved.
+
+## Tips
+
+<Aside type="tip">
+**Transparent backgrounds**
+
+SVG exports may have transparent backgrounds by default. If you need a white background, check the export settings or add a background rectangle manually.
+</Aside>
+
+<Aside type="tip">
+**High-resolution PNG**
+
+PNG exports use the current canvas zoom level. Zoom in before exporting if you need higher resolution output.
+</Aside>
+
+- **File naming:** Exported files are named after the view key (e.g., `SystemContext.png`).
+- **Multiple views:** Export each view separately. There is no batch export for images — export views one at a time.
+
+## See also
+
+- [Mermaid](/export/mermaid) — Text-based diagram export
+- [PlantUML](/export/plantuml) — Text-based diagram export
+- [arc42 Documentation](/export/arc42) — Structured documentation generation

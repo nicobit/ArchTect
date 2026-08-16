@@ -2,14 +2,14 @@
 
 **ArchTect** is a visual editor for Structurizr DSL inside VS Code. Edit architecture as code and as diagrams — with a bidirectional canvas ↔ DSL workflow that keeps both in sync — and generate architecture documentation directly from your model.
 
-![ArchTect demo](docs/assets/demo2.gif)
+![ArchTect demo](docs/public/assets/demo2.gif)
 
 
 ## 🎥 2-Minute Overview
 
 
 
-[![ArchTect Demo](docs/assets/deployment_environment.png)](https://nicobit.github.io/ArchTect/assets/demo5.mp4)
+[![ArchTect Demo](docs/public/assets/deployment_environment.png)](https://archstudio.io/assets/demo5.mp4)
 
 
 
@@ -17,7 +17,7 @@
 
 ## Documentation
 
-Full documentation is at **https://nicobit.github.io/ArchTect/**
+Full documentation is at **https://archstudio.io/**
 
 Covers:
 - Getting started with the VS Code extension

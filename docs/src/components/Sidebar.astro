@@ -1,0 +1,264 @@
+---
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import { Icon } from '@astrojs/starlight/components';
+
+// Minimal shape of Starlight's internal SidebarEntry — not part of the
+// package's public exports, so defined locally rather than imported.
+type MinimalSidebarEntry =
+	| { type: 'link'; label: string; href: string }
+	| { type: 'group'; label: string; entries: MinimalSidebarEntry[] };
+
+// Maps each top-level sidebar group's label to a built-in Starlight icon, used
+// to render the icon-only rail when the sidebar is collapsed. Starlight's
+// sidebar config has no icon field for groups, so this mapping lives here
+// instead and is matched against each group's rendered label text at runtime.
+const groupIcons: Record<string, string> = {
+	Overview: 'open-book',
+	'Getting Started': 'rocket',
+	'Portal Guide': 'laptop',
+	Modeling: 'puzzle',
+	Editing: 'pencil',
+	'Export & Documentation': 'download',
+	'VS Code Extension': 'vscode',
+	Plugins: 'setting',
+	Troubleshooting: 'warning',
+	Reference: 'document',
+	Contributing: 'github',
+	Changelog: 'star',
+};
+
+function firstHref(entries: MinimalSidebarEntry[]): string | undefined {
+	for (const entry of entries) {
+		if (entry.type === 'link') return entry.href;
+		const nested = firstHref(entry.entries);
+		if (nested) return nested;
+	}
+	return undefined;
+}
+
+const sidebarEntries = Astro.locals.starlightRoute.sidebar;
+const groupHrefs: Record<string, string> = {};
+for (const entry of sidebarEntries) {
+	if (entry.type === 'group') {
+		const href = firstHref(entry.entries);
+		if (href) groupHrefs[entry.label] = href;
+	}
+}
+---
+
+<div class="sidebar-expanded-only sidebar-toolbar">
+	<div class="sidebar-filter">
+		<svg class="sidebar-filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="11" cy="11" r="8" />
+			<path d="m21 21-4.3-4.3" />
+		</svg>
+		<input type="text" class="sidebar-filter-input" placeholder="Filter sidebar…" aria-label="Filter sidebar" />
+	</div>
+</div>
+
+<div class="sidebar-collapsed-only sidebar-icon-rail">
+	{
+		Object.entries(groupIcons).map(([label, icon]) => (
+			<a href={groupHrefs[label] ?? '#'} class="sidebar-icon-rail-item" data-group-label={label} aria-label={label} title={label}>
+				<Icon name={icon as Parameters<typeof Icon>[0]['name']} />
+			</a>
+		))
+	}
+</div>
+
+<div class="sidebar-expanded-only sidebar-tree">
+	<Default {...Astro.props}><slot /></Default>
+</div>
+
+<script>
+	const nav = document.querySelector('nav.sidebar');
+	const iconRail = document.querySelector('.sidebar-icon-rail');
+
+	// Rail items are plain links to each group's first page — the sidebar
+	// stays collapsed on click; only the dedicated toggle button expands it.
+	// The collapsed/expanded class itself is applied synchronously by the
+	// inline script in Head.astro, before first paint, to avoid a flash.
+
+	// Mark whichever rail icon corresponds to the group containing the
+	// current page, so it reads as "selected" even while collapsed.
+	if (nav && iconRail) {
+		const currentLink = nav.querySelector('a[aria-current="page"]');
+		const activeGroupLabel = currentLink
+			?.closest('details')
+			?.querySelector(':scope > summary .group-label .large')?.textContent;
+		if (activeGroupLabel) {
+			iconRail.querySelectorAll<HTMLButtonElement>('.sidebar-icon-rail-item').forEach((btn) => {
+				if (btn.dataset.groupLabel === activeGroupLabel) {
+					btn.setAttribute('data-active', 'true');
+				}
+			});
+		}
+	}
+
+	const filterInput = document.querySelector<HTMLInputElement>('.sidebar-filter-input');
+	if (filterInput && nav) {
+		const items = Array.from(nav.querySelectorAll<HTMLLIElement>('li'));
+
+		filterInput.addEventListener('input', () => {
+			const query = filterInput.value.trim().toLowerCase();
+
+			if (!query) {
+				items.forEach((li) => {
+					li.hidden = false;
+				});
+				return;
+			}
+
+			items.forEach((li) => {
+				const link = li.querySelector(':scope > a');
+				if (link) {
+					const matches = (link.textContent || '').toLowerCase().includes(query);
+					li.hidden = !matches;
+				}
+			});
+
+			// A group <li> stays visible if it has any visible descendant link.
+			nav.querySelectorAll<HTMLLIElement>('li:has(details)').forEach((groupLi) => {
+				const hasVisibleLink = Array.from(groupLi.querySelectorAll('li > a')).some(
+					(a) => !(a.closest('li') as HTMLLIElement).hidden
+				);
+				groupLi.hidden = !hasVisibleLink;
+				const details = groupLi.querySelector('details');
+				if (details && hasVisibleLink) {
+					details.setAttribute('open', '');
+				}
+			});
+		});
+	}
+</script>
+
+<style>
+	/* Visibility is driven purely by the html.sidebar-is-collapsed class rather
+	   than the [hidden] attribute, so Starlight's own .sidebar-content (which
+	   wraps all of the above as siblings) never itself gets hidden — only its
+	   individual children swap, keeping layout/sizing intact either way.
+	   The swap fades in rather than snapping, timed just after the sidebar's
+	   own width transition (see custom.css) mostly finishes. */
+	.sidebar-collapsed-only {
+		display: none;
+		opacity: 0;
+	}
+
+	.sidebar-expanded-only {
+		opacity: 1;
+		transition: opacity 150ms ease 120ms;
+	}
+
+	:global(html.sidebar-is-collapsed) .sidebar-expanded-only {
+		display: none;
+	}
+
+	:global(html.sidebar-is-collapsed) .sidebar-collapsed-only {
+		display: flex;
+		opacity: 1;
+		transition: opacity 150ms ease 120ms;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.sidebar-expanded-only,
+		.sidebar-collapsed-only {
+			transition: none;
+		}
+	}
+
+	.sidebar-toolbar {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.sidebar-filter {
+		position: relative;
+		display: flex;
+		align-items: center;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.sidebar-filter-icon {
+		position: absolute;
+		left: 0.625rem;
+		color: var(--sl-color-gray-4);
+		pointer-events: none;
+	}
+
+	.sidebar-filter-input {
+		width: 100%;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.5rem;
+		background: var(--sl-color-black);
+		color: var(--sl-color-text);
+		font-size: var(--sl-text-sm);
+		padding: 0.4rem 0.75rem 0.4rem 2rem;
+	}
+
+	.sidebar-filter-input:focus {
+		outline: 2px solid var(--sl-color-accent);
+		outline-offset: -1px;
+	}
+
+	.sidebar-filter-input::placeholder {
+		color: var(--sl-color-gray-4);
+	}
+
+	.sidebar-icon-rail {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.sidebar-icon-rail-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 1px solid transparent;
+		border-radius: 0.5rem;
+		background: transparent;
+		color: var(--sl-color-gray-3);
+		font-size: 1.25rem;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.sidebar-icon-rail-item:hover {
+		color: var(--sl-color-accent-high);
+		background: var(--sl-color-accent-low);
+	}
+
+	/* The group containing the current page gets the same highlight as hover,
+	   so it's clear at a glance which section you're in while collapsed. */
+	.sidebar-icon-rail-item[data-active='true'] {
+		color: var(--sl-color-accent-high);
+		background: var(--sl-color-accent-low);
+	}
+
+	/* Collapsed state: shrink the whole left nav down to an icon-only rail.
+	   --sl-sidebar-width must be overridden at the same [data-has-sidebar] (html)
+	   scope Starlight itself uses, since Page.astro reads it there to compute
+	   --sl-content-inline-start — setting it lower (e.g. on .sidebar) would resize
+	   the nav but leave the content column's left padding unchanged. */
+	:global(html.sidebar-is-collapsed[data-has-sidebar]) {
+		--sl-sidebar-width: 4.5rem;
+	}
+
+	:global(html.sidebar-is-collapsed) :global(.sidebar-pane) {
+		padding-inline: 0.5rem;
+	}
+
+	/* PageSidebar.astro derives the right-hand "On this page" panel's own inner
+	   width from the same --sl-sidebar-width (`calc(sidebar-width - 2 * pad-x)`),
+	   so shrinking that variable for the left nav also collapses the TOC's text
+	   column to near-zero. Give it a stable, independent width instead. */
+	:global(html.sidebar-is-collapsed) :global(.right-sidebar-panel) :global(.sl-container) {
+		width: 14rem;
+		max-width: 14rem;
+	}
+</style>

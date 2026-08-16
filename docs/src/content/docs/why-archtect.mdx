@@ -1,0 +1,58 @@
+---
+title: Why ArchTect
+description: How ArchTect compares to code-only and visual-only architecture tools.
+---
+
+## The problem with architecture documentation
+
+Most architecture documentation is a collection of separate diagrams, hand-drawn or hand-coded, with no shared source of truth behind them. Each diagram is redrawn or rewritten independently, so they drift from reality and from each other, reviews become unreliable, and documentation rots.
+
+The C4 model and Structurizr's DSL already solve this: model your architecture once, and generate every view — context, container, component, deployment — from that single model. ArchTect gives you a visual way to define that same model, lowering the barrier to learning the DSL, without giving up its precision and determinism.
+
+## ArchTect completes the model-based approach
+
+ArchTect is a visual, AI-assisted editor for Structurizr DSL. It lets you design on the canvas, write the DSL directly, or ask an AI to model it — all three surfaces stay in sync with the same underlying model, so there's never a diagram to reconcile back to source. Every view is still a deterministic projection of that one model: opinionated, repeatable, and governance-ready.
+
+### Code-first clarity, visual-first communication
+
+Bidirectional canvas-to-DSL editing keeps the diagram and model in permanent sync. Edit in whichever surface is most productive — the DSL editor or the interactive canvas, open as tabs side by side — without losing fidelity. Every visual change serializes back to clean, deterministic DSL.
+
+![DSL editor tab with syntax-highlighted source](/images/screenshots/portal-guide/dsl-editor-tab.png)
+
+### Built for both architects and engineers
+
+- **Architects** get interactive diagrams, multiple view types, and executive-ready exports (PNG, SVG, Mermaid, PlantUML, Ilograph).
+- **Engineers** get a version-controllable DSL, stable view keys, and a VS Code extension that fits into their existing workflow.
+- **Reviewers** get deterministic outputs they can trust — same model in, same diagram out.
+
+### Consistency and governance
+
+ArchTect is deterministic by design. Serialization is stable and layouts are predictable. View types are explicit, with stable view keys, so architecture reviews are repeatable and governance-ready. No more "it looked different on my machine."
+
+### AI-assisted modeling
+
+Built-in AI chat and VS Code Copilot integration help you iterate faster. Get suggestions for modeling decisions, generate arc42 documentation from your model, and explore your architecture through natural language.
+
+![AI Chat panel](/images/screenshots/portal-guide/ai-chat-panel.png)
+
+### Enterprise-friendly outputs
+
+Export diagrams to PNG, SVG, Mermaid, PlantUML, or Ilograph. Generate arc42-structured documentation directly from your model. Share architecture with stakeholders in whatever format they need.
+
+### VS Code native
+
+ArchTect runs as a VS Code extension — no separate app to install, no context switching. Open `.dsl` files directly, use the Command Palette, and leverage the Copilot chat participant. It also runs as a standalone browser app for teams that prefer web-based access.
+
+## How ArchTect compares
+
+| Capability | Freeform diagramming tools | Code-only DSL tools | **ArchTect** |
+|---|---|---|---|
+| Single underlying model | No — separate diagrams | Yes | **Yes** |
+| Version-control friendly | Difficult | Yes | **Yes** |
+| Interactive visual editor | Yes | No | **Yes** |
+| Bidirectional DSL ↔ canvas | No | No | **Yes** |
+| Deterministic outputs | No | Varies | **Yes** |
+| AI-assisted modeling | No | No | **Yes** |
+| arc42 doc generation | No | No | **Yes** |
+| Multi-format export | Image only | Limited | **PNG, SVG, Mermaid, PlantUML, Ilograph** |
+| VS Code integration | No | Partial | **Native extension** |

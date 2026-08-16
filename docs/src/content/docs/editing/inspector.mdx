@@ -1,0 +1,82 @@
+---
+title: Inspector Reference
+description: Detailed reference for Inspector panel fields and editing behavior.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Inspector panel on the right side of the editor shows and edits properties for the currently selected item.
+
+<Aside type="note">
+**Looking for a walkthrough?**
+
+For a guided introduction to the Inspector, see [Portal Guide: Inspector](/portal-guide/inspector). This page is a detailed reference.
+</Aside>
+
+## Context-sensitive display
+
+The Inspector adapts based on your selection:
+
+### Element properties (person, software system, container, component)
+
+| Field | Description |
+|---|---|
+| **Name** | Display name |
+| **Description** | Purpose or role of the element |
+| **Technology** | Technology stack (e.g., "Java", "PostgreSQL") |
+| **Tags** | Comma-separated tags for styling and filtering |
+| **URL** | External documentation link |
+| **Properties** | Custom key-value metadata |
+
+### Relationship properties
+
+| Field | Description |
+|---|---|
+| **Source** | Originating element |
+| **Destination** | Target element |
+| **Description** | What the relationship represents |
+| **Technology** | Communication protocol (e.g., "HTTPS", "gRPC") |
+| **Tags** | Tags for styling |
+
+### View properties (when no element is selected)
+
+| Field | Description |
+|---|---|
+| **Title** | View display title |
+| **Description** | View description |
+| **Auto layout** | Enable/disable and direction |
+| **Layout engine** | Default, ELK, Dagre, or Graphviz |
+| **Themes** | Applied theme list |
+
+### Filtered view properties
+
+In addition to standard view properties:
+
+| Field | Description |
+|---|---|
+| **Base view** | The view being filtered |
+| **Filter mode** | Include or exclude |
+| **Tag list** | Tags used for filtering |
+
+## Editing workflow
+
+1. **Select** an item on the canvas or in the Views panel.
+2. **Edit** fields in the Inspector.
+3. **Save** — Click the Save button or press `Ctrl+S`.
+4. **Cancel** — Click Cancel to discard unsaved changes.
+
+All Inspector edits serialize back to the DSL automatically.
+
+## Tips
+
+<Aside type="tip">
+Use `Tab` / `Shift+Tab` to move between fields. Click the canvas background to show view-level settings.
+</Aside>
+
+- Tags drive styles — editing tags changes how elements appear.
+- Properties are preserved in exports and documentation.
+
+## See also
+
+- [Canvas](/editing/canvas) — Interacting with diagrams
+- [View Settings](/editing/view-settings) — Layout and theme configuration

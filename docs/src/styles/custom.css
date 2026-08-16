@@ -1,0 +1,585 @@
+/* ArchTect brand theme: gold/amber accent, dark-first background */
+
+/* Registering --sl-sidebar-width as a typed <length> makes it animatable —
+   without this, browsers treat custom properties as opaque strings and any
+   transition on it (or on properties derived from it via calc()) jumps
+   instantly instead of interpolating. */
+@property --sl-sidebar-width {
+	syntax: '<length>';
+	inherits: true;
+	initial-value: 18.75rem;
+}
+
+:root {
+	--sl-color-accent-low: hsl(38, 60%, 20%);
+	--sl-color-accent: hsl(38, 76%, 40%);
+	--sl-color-accent-high: hsl(45, 76%, 55%);
+	--sl-color-bg: #0b0b0c;
+	--sl-color-bg-nav: #0b0b0c;
+	--sl-color-bg-sidebar: #0b0b0c;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: hsl(45, 76%, 88%);
+	--sl-color-accent: hsl(38, 76%, 38%);
+	--sl-color-accent-high: hsl(38, 70%, 25%);
+	--sl-color-bg: #ffffff;
+	--sl-color-bg-nav: #ffffff;
+	--sl-color-bg-sidebar: #ffffff;
+}
+
+/* Animate the collapse/expand of the left sidebar: the elements whose size or
+   position is driven by --sl-sidebar-width (now animatable via @property
+   above) get a matching transition, so the nav, content column, and the
+   fixed toggle button all move together instead of snapping instantly. */
+.sidebar-pane,
+.main-pane,
+.main-frame,
+.content-sidebar-toggle {
+	transition: width 220ms ease, padding-inline-start 220ms ease, left 220ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sidebar-pane,
+	.main-pane,
+	.main-frame,
+	.content-sidebar-toggle {
+		transition: none;
+	}
+}
+
+/* Branded scrollbar (Firefox + WebKit): left nav and right TOC panels, plus
+   the main page scroll — same gold color throughout. scrollbar-width: thin
+   (what aspire.dev itself uses) narrows the Firefox scrollbar; the matching
+   ::-webkit-scrollbar width covers Chrome/Edge/Safari, which don't support
+   the thin keyword. Page scrollbar stays a touch narrower than the sidebar. */
+html {
+	scrollbar-color: var(--sl-color-accent) transparent;
+	scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+html::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+	background-color: var(--sl-color-accent);
+	border-radius: 999px;
+}
+
+.sidebar-pane,
+.right-sidebar-panel {
+	scrollbar-color: var(--sl-color-accent) transparent;
+	scrollbar-width: thin;
+}
+
+.sidebar-pane::-webkit-scrollbar,
+.right-sidebar-panel::-webkit-scrollbar {
+	width: 0.3125rem;
+}
+
+.sidebar-pane::-webkit-scrollbar-track,
+.right-sidebar-panel::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.sidebar-pane::-webkit-scrollbar-thumb,
+.right-sidebar-panel::-webkit-scrollbar-thumb {
+	background-color: var(--sl-color-accent);
+	border-radius: 999px;
+}
+
+/* Rounded corners on callout boxes (Note/Tip/Caution/Danger asides) — Starlight's
+   default is a flat-cornered card with just a colored left border. */
+.starlight-aside {
+	border-radius: 0.5rem;
+}
+
+/* Starlight splits any viewport width beyond content+both sidebars evenly
+   between the reading column and the right TOC panel (see TwoColumnContent's
+   `max(sidebar-width, sidebar-width + (100% - content-width - sidebar-width) / 2)`
+   formula). Raising --sl-content-width shifts that surplus toward the content
+   column instead of widening the TOC panel — the supported way to rebalance
+   this, rather than clamping the TOC's inner container and leaving its
+   (still oversized) outer column as dead space. */
+:root {
+	--sl-content-width: 60rem;
+}
+
+/* The fixed collapse/expand toggle (see PageFrame.astro) sits in the content
+   column's own left padding, right where the page title and body text start.
+   With the sidebar expanded there isn't quite enough room for both, so give
+   the main content panel extra left padding to clear the button. */
+@media (min-width: 50rem) {
+	html[data-has-sidebar]:not(.sidebar-is-collapsed) main .content-panel {
+		padding-inline-start: calc(var(--sl-content-pad-x) + 2.5rem);
+		transition: padding-inline-start 220ms ease;
+	}
+}
+
+/* Landing page (template: splash) — Starlight's own <Hero> renders the title,
+   tagline, and actions; only the eyebrow above it is custom. */
+
+/* The splash page has no page-level sidebar, so give its content panel more
+   breathing room than the 45rem prose cap used on regular doc pages. */
+[data-has-hero] .sl-container {
+	max-width: 78rem;
+}
+
+/* Starlight's default hero grid reserves a 4fr column for an image even when
+   none is set, which keeps the text pinned to a narrow left-hand track and
+   caps each line at 50ch. Collapse to a single, wider, centered column. */
+.hero-imageless .hero {
+	grid-template-columns: 1fr;
+	max-width: 64rem;
+	margin-inline: auto;
+	text-align: center;
+	/* Starlight's own padding-block scales with viewport height (up to 10vmin
+	   per side) — that inflates both the gap above the title and the gap below
+	   the action buttons (before the animated diagram that follows). Flatten
+	   both; a small fixed bottom margin replaces the latter. */
+	padding-block: 0;
+	margin-bottom: 1.5rem;
+}
+
+.hero-imageless .stack {
+	text-align: center;
+}
+
+.hero-imageless .copy {
+	align-items: center;
+}
+
+.hero-imageless .copy > * {
+	max-width: 100%;
+}
+
+.hero-imageless .actions {
+	justify-content: center;
+}
+
+.hero-eyebrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	margin-bottom: 1rem;
+}
+
+.hero-dot {
+	height: 0.375rem;
+	width: 0.375rem;
+	border-radius: 999px;
+	background: #10b981;
+}
+
+.hero-actions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	border-radius: 0.5rem;
+	padding: 0.625rem 1.25rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: opacity 0.15s, background-color 0.15s;
+}
+
+.btn-primary {
+	background: var(--sl-color-accent);
+	color: #ffffff;
+}
+
+.btn-primary:hover {
+	opacity: 0.9;
+}
+
+.btn-secondary {
+	border: 1px solid var(--sl-color-gray-5);
+	color: var(--sl-color-text);
+}
+
+.btn-secondary:hover {
+	background: var(--sl-color-gray-6);
+}
+
+.frame {
+	border-radius: 0.75rem;
+	border: 1px solid var(--sl-color-gray-5);
+	overflow: hidden;
+	box-shadow: var(--sl-shadow-lg);
+}
+
+.frame img {
+	display: block;
+	width: 100%;
+	margin: 0;
+}
+
+.frame-hero {
+	max-width: 72rem;
+	margin: 0 auto;
+}
+
+.frame-short img {
+	max-height: 20rem;
+	width: auto;
+	max-width: 100%;
+	object-fit: contain;
+	margin: 0 auto;
+	background: #ffffff;
+	border-radius: 0.75rem;
+	box-shadow: 0 20px 40px hsla(0, 0%, 0%, 0.35);
+	border: none;
+}
+
+.frame-short {
+	border: none;
+	box-shadow: none;
+	display: flex;
+	justify-content: center;
+}
+
+.section {
+	max-width: 78rem;
+	margin: 0 auto;
+	padding: 4rem 0;
+}
+
+.section.center {
+	text-align: center;
+}
+
+.section.split {
+	display: grid;
+	gap: 3rem;
+	align-items: center;
+}
+
+@media (min-width: 50rem) {
+	.section.split {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.caption {
+	text-align: center;
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+	margin-top: 1rem;
+}
+
+.eyebrow {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--sl-color-accent-high);
+	margin-bottom: 0.75rem;
+}
+
+.eyebrow.center {
+	text-align: center;
+}
+
+.section h2 {
+	font-size: 1.875rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	margin: 0 0 1rem;
+	border: none;
+	padding: 0;
+}
+
+@media (min-width: 50rem) {
+	.section h2 {
+		font-size: 2.25rem;
+	}
+}
+
+.section.center h2,
+h2.center {
+	text-align: center;
+}
+
+.section p {
+	color: var(--sl-color-gray-2);
+}
+
+.lead {
+	max-width: 42rem;
+	margin: 0 auto;
+	font-size: 1.0625rem;
+}
+
+.center {
+	text-align: center;
+}
+
+.link-arrow {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--sl-color-accent-high);
+	text-decoration: none;
+}
+
+.link-arrow:hover {
+	text-decoration: underline;
+}
+
+/* Mockup / code+preview panel */
+
+.mockup-titlebar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	background: var(--sl-color-gray-6);
+}
+
+.dots {
+	display: flex;
+	gap: 0.375rem;
+}
+
+.dot {
+	height: 0.75rem;
+	width: 0.75rem;
+	border-radius: 999px;
+}
+
+.dot-red {
+	background: #f87171;
+}
+
+.dot-yellow {
+	background: #facc15;
+}
+
+.dot-green {
+	background: #4ade80;
+}
+
+.mockup-filename {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--sl-color-gray-3);
+}
+
+.mockup-badge {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--sl-color-gray-4);
+}
+
+.mockup-grid {
+	display: grid;
+	background: var(--sl-color-gray-6);
+}
+
+@media (min-width: 50rem) {
+	.mockup-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.mockup-code {
+	display: flex;
+	align-items: center;
+	border-right: 1px solid var(--sl-color-gray-5);
+	padding: 1.5rem;
+	background: var(--sl-color-bg);
+}
+
+.mockup-code .expressive-code {
+	width: 100%;
+	margin: 0;
+}
+
+.mockup-code pre {
+	margin: 0;
+	border-radius: 0.5rem;
+	font-size: 0.8125rem;
+	line-height: 1.6;
+}
+
+.mockup-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background: var(--sl-color-gray-6);
+}
+
+.mockup-preview img {
+	border-radius: 0.5rem;
+	margin: 0;
+	width: 100%;
+	box-shadow: 0 12px 28px hsla(0, 0%, 0%, 0.35);
+}
+
+/* Numbered checklist (view types) */
+
+.checklist {
+	display: grid;
+	gap: 0 2.5rem;
+}
+
+@media (min-width: 50rem) {
+	.checklist {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.checklist-item {
+	display: flex;
+	gap: 1rem;
+	padding: 1.25rem 0;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+.checklist-item h3 {
+	font-size: 1rem;
+	font-weight: 600;
+	margin: 0 0 0.25rem;
+	border: none;
+	padding: 0;
+}
+
+.checklist-item p {
+	font-size: 0.875rem;
+	margin: 0 0 0.5rem;
+}
+
+.checklist-num {
+	font-size: 0.75rem;
+	color: var(--sl-color-gray-4);
+	padding-top: 0.125rem;
+}
+
+/* Comparison cards */
+
+.compare-grid {
+	display: grid;
+	gap: 1.5rem;
+	margin-top: 2.5rem;
+}
+
+@media (min-width: 50rem) {
+	.compare-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.compare-card {
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.75rem;
+	padding: 1.5rem;
+}
+
+.quote-mark {
+	font-size: 1.5rem;
+	color: var(--sl-color-accent-high);
+	margin-bottom: 0.75rem;
+}
+
+.compare-title {
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+.compare-card p:last-child {
+	font-size: 0.875rem;
+}
+
+/* Closing CTA + footer */
+
+.closing-cta h2 {
+	font-size: 1.875rem;
+}
+
+@media (min-width: 50rem) {
+	.closing-cta h2 {
+		font-size: 2.25rem;
+	}
+}
+
+.landing-footer {
+	border-top: 1px solid var(--sl-color-gray-5);
+	margin-top: 2rem;
+	max-width: 72rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 0 2.5rem;
+}
+
+.footer-grid {
+	display: grid;
+	gap: 2.5rem;
+	padding: 3rem 0;
+}
+
+@media (min-width: 50rem) {
+	.footer-grid {
+		grid-template-columns: 2fr 1fr 1fr;
+	}
+}
+
+.footer-title {
+	font-weight: 700;
+	font-size: 1.125rem;
+	margin-bottom: 0.5rem;
+}
+
+.footer-grid p {
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+	max-width: 20rem;
+}
+
+.footer-heading {
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+}
+
+.footer-grid ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	font-size: 0.875rem;
+}
+
+.footer-grid ul a {
+	color: var(--sl-color-gray-3);
+	text-decoration: none;
+}
+
+.footer-grid ul a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+.footer-copyright {
+	font-size: 0.75rem;
+	color: var(--sl-color-gray-4);
+}

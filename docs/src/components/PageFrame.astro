@@ -1,0 +1,130 @@
+---
+import Default from '@astrojs/starlight/components/PageFrame.astro';
+import { Icon } from '@astrojs/starlight/components';
+
+const { hasSidebar, id } = Astro.locals.starlightRoute;
+const isDraft = id === 'contributing' || id.startsWith('contributing/');
+---
+
+<Default {...Astro.props}>
+	<Fragment slot="header"><slot name="header" /></Fragment>
+	<Fragment slot="sidebar"><slot name="sidebar" /></Fragment>
+	{isDraft && (
+		<div class="draft-watermark" aria-hidden="true">
+			<span>Draft · Coming soon</span>
+		</div>
+	)}
+	<slot />
+</Default>
+
+{
+	hasSidebar && (
+		<button
+			type="button"
+			class="content-sidebar-toggle"
+			aria-label="Collapse sidebar"
+			title="Collapse sidebar"
+			aria-expanded="true"
+		>
+			<span class="content-sidebar-toggle-icon-collapse">
+				<Icon name="left-caret" />
+			</span>
+			<span class="content-sidebar-toggle-icon-expand">
+				<Icon name="right-caret" />
+			</span>
+		</button>
+	)
+}
+
+<script>
+	import { isSidebarCollapsed, setSidebarCollapsed } from '../scripts/sidebar-collapse';
+
+	const toggle = document.querySelector<HTMLButtonElement>('.content-sidebar-toggle');
+
+	function sync() {
+		const collapsed = isSidebarCollapsed();
+		toggle?.setAttribute('aria-expanded', String(!collapsed));
+		toggle?.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+		toggle?.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+	}
+
+	toggle?.addEventListener('click', () => {
+		setSidebarCollapsed(!isSidebarCollapsed());
+	});
+
+	document.addEventListener('sidebar-collapse-change', sync);
+	sync();
+</script>
+
+<style>
+	/* Pinned to the viewport, like Starlight's own .header, but positioned at
+	   the left edge of the content column (--sl-content-inline-start already
+	   tracks the sidebar's current width, expanded or collapsed) so it always
+	   sits in the content's left gutter rather than overlapping the title. */
+	.content-sidebar-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		z-index: var(--sl-z-index-navbar);
+		top: calc(var(--sl-nav-height) + 0.75rem + 1.875rem + 10px);
+		left: calc(var(--sl-content-inline-start, 0px) + 0.5rem);
+		width: 1.875rem;
+		height: 1.875rem;
+		border: 1px solid var(--sl-color-accent);
+		border-radius: 0.375rem;
+		background: transparent;
+		color: var(--sl-color-accent-high);
+		font-size: 1rem;
+		cursor: pointer;
+	}
+
+	.content-sidebar-toggle:hover {
+		color: #ffffff;
+	}
+
+	:root[data-theme='light'] .content-sidebar-toggle:hover {
+		color: #000000;
+	}
+
+	.content-sidebar-toggle-icon-expand {
+		display: none;
+	}
+
+	:global(html.sidebar-is-collapsed) .content-sidebar-toggle-icon-collapse {
+		display: none;
+	}
+
+	:global(html.sidebar-is-collapsed) .content-sidebar-toggle-icon-expand {
+		display: flex;
+	}
+
+	@media (max-width: 49.9375rem) {
+		.content-sidebar-toggle {
+			display: none;
+		}
+	}
+
+	.draft-watermark {
+		position: fixed;
+		inset: 0;
+		z-index: var(--sl-z-index-navbar, 4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.draft-watermark span {
+		display: inline-block;
+		transform: rotate(-32deg);
+		white-space: nowrap;
+		font-size: clamp(2rem, 6vw, 4.5rem);
+		font-weight: 800;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-3);
+		opacity: 0.12;
+	}
+</style>

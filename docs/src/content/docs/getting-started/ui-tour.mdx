@@ -1,0 +1,99 @@
+---
+title: UI Tour
+description: A guided walkthrough of the ArchTect interface — canvas, panels, toolbar, and editor.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+ArchTect's interface is organized around a few key areas. This page gives you a quick orientation so you know where everything is.
+
+![ArchTect full-window view: left rail and panel, canvas, and Inspector](/images/screenshots/portal-guide/full-window-three-panel.png)
+
+## Canvas
+
+The **canvas** is the central area where your architecture diagram is displayed. This is where you interact with your model visually.
+
+- **Pan** — Hold `Space` and drag, or use the middle mouse button.
+- **Zoom** — Scroll wheel or the zoom controls in the toolbar.
+- **Select** — Click on a node or relationship to select it. Hold `Shift` to multi-select.
+- **Drag** — Drag nodes to reposition them on the canvas.
+- **Fit to screen** — Use the toolbar button or `Ctrl+0` to fit all elements into the viewport.
+
+![Canvas with an element selected, showing the floating action toolbar](/images/screenshots/getting-started/canvas-element-selected.png)
+
+## Views Panel
+
+The **Views panel** (left rail) lists all the views defined in your workspace. Click a view to open it on the canvas.
+
+- **View types** are visually distinguished — System Context, Container, Dynamic, Deployment, and Filtered views each have their own semantics.
+- Views you write in the DSL are tagged `DSL`; views ArchTect derives automatically are tagged `AUTO`.
+- **Right-click** a view for context actions: open in Diagram Canvas or DSL Editor.
+- **Create new views** using the **+** button at the top of the panel.
+
+![Views panel listing authored (DSL) and auto-generated views for a workspace](/images/screenshots/getting-started/views-panel-list.png)
+
+## Inspector
+
+The **Inspector** (right panel) shows properties for the currently selected element or relationship. Use it to:
+
+- Edit **names, descriptions, and technology** labels.
+- Modify **tags** and **properties**.
+- Adjust **layout options** and **view settings** (when a view is selected).
+- View and edit **relationship details** including source, destination, and description.
+
+![Inspector showing properties for a selected software system element](/images/screenshots/portal-guide/inspector-element-selected.png)
+
+<Aside type="note">
+**View-level settings**
+
+Click the canvas background (deselect all) to show view-level settings in the Inspector: title, description, auto-layout, layout engine, and themes. The layout engine choice is saved per view in the DSL.
+</Aside>
+
+## Toolbar
+
+The **toolbar** at the top of the canvas provides quick access to common actions:
+
+- **Export** — Export the current view as PNG, SVG, or other formats.
+- **Zoom controls** — Zoom in, zoom out, and fit to screen.
+- **View creation** — Create new views.
+
+![Canvas toolbar showing the view selector, undo/redo, layout toggle, theme, and Export controls](/images/screenshots/getting-started/toolbar-closeup.png)
+
+## DSL Editor
+
+The **DSL Editor** tab gives you direct access to the Structurizr DSL source. It uses Monaco (the same editor engine as VS Code) with syntax highlighting and diagnostics.
+
+- Changes in the DSL editor update the canvas automatically.
+- Changes on the canvas serialize back to the DSL automatically.
+- This bidirectional sync is a core feature of ArchTect — you can work in whichever mode is most productive.
+
+![DSL Editor tab showing syntax-highlighted Structurizr DSL source](/images/screenshots/portal-guide/dsl-editor-tab.png)
+
+<Aside type="tip">
+**Split workflow**
+
+Many users keep the DSL editor open to make quick structural changes (adding elements, relationships) and switch to the canvas for visual arrangement and review.
+</Aside>
+
+## Command Palette (VS Code)
+
+In the VS Code extension, open the **Command Palette** (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for `ArchTect` to see available commands:
+
+- `ArchTect: New Project` — Create a new workspace.
+- `ArchTect: Open Generation Center` — Open the documentation generation center.
+- `ArchTect: Open User Guide` — Open the user guide.
+- `ArchTect: Show Copilot Diagnostics` — Debug AI integration issues.
+
+<Aside type="note">
+**Opening a DSL file**
+
+To open a `.dsl` file in the visual editor, open the file in VS Code and click the **ArchTect icon** in the editor title bar. You can also right-click the file in the Explorer → **ArchTect: Open with ArchTect**.
+</Aside>
+
+See [VS Code Commands](/reference/commands-vscode) for the full list.
+
+## Next steps
+
+- [Your First Project](/getting-started/first-project) — Create your first workspace.
+- [Canvas](/editing/canvas) — Deep dive into canvas interactions.
+- [Inspector](/editing/inspector) — Full inspector reference.

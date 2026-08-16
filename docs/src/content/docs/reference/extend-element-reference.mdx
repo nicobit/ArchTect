@@ -1,0 +1,508 @@
+---
+title: Extend Element Reference
+description: DSL syntax reference for extending existing elements with the !element directive.
+---
+## Syntax
+
+### !element - Extend Single Element
+```dsl
+!element <identifier> {
+  // Add properties to an existing element
+}
+```
+
+### !elements - Bulk Extend Multiple Elements
+```dsl
+!elements "<expression>" {
+  // Apply properties to all matching elements
+}
+```
+
+## Use Cases
+
+### 1. Add Tags to Existing Element
+```dsl
+workspace {
+  model {
+    api = softwareSystem "API"
+    
+    !element api {
+      tags "Backend"
+      tags "Critical"
+    }
+  }
+}
+```
+
+### 2. Add URL and Properties
+```dsl
+workspace {
+  model {
+    api = softwareSystem "API"
+    
+    !element api {
+      url "https://api.example.com"
+      properties {
+        "Owner" "Platform Team"
+        "SLA" "99.9%"
+      }
+    }
+  }
+}
+```
+
+### 3. Add Relationships
+```dsl
+workspace {
+  model {
+    user = person "User"
+    monitoring = softwareSystem "Monitoring"
+    
+    !element user {
+      this -> monitoring "Sends usage data"
+    }
+  }
+}
+```
+
+### 4. Add Perspectives
+```dsl
+workspace {
+  model {
+    app = softwareSystem "App"
+    
+    !element app {
+      perspectives {
+        "Security" "Requires security audit"
+        "Performance" "Target: <100ms response time"
+      }
+    }
+  }
+}
+```
+
+### 5. Bulk Tag All Elements
+```dsl
+workspace {
+  model {
+    api = softwareSystem "API"
+    db = softwareSystem "DB"
+    
+    !elements "*" {
+      tags "Production"
+      tags "Monitored"
+    }
+  }
+}
+```
+
+### 6. Bulk Tag by Type
+```dsl
+workspace {
+  model {
+    user = person "User"
+    admin = person "Admin"
+    api = softwareSystem "API"
+    
+    !elements "element.type==Person" {
+      tags "Human"
+    }
+  }
+}
+```
+
+### 7. Bulk Tag by Existing Tag
+```dsl
+workspace {
+  model {
+    api1 = softwareSystem "API 1" "Backend"
+    api2 = softwareSystem "API 2" "Backend"
+    web = softwareSystem "Web" "Frontend"
+    
+    !elements "tag==Backend" {
+      tags "Internal"
+      properties {
+        "Team" "Platform"
+      }
+    }
+  }
+}
+```
+
+### 8. Bulk Add Relationships
+```dsl
+workspace {
+  model {
+    api1 = softwareSystem "API 1" "Backend"
+    api2 = softwareSystem "API 2" "Backend"
+    monitoring = softwareSystem "Monitoring"
+    
+    !elements "tag==Backend" {
+      this -> monitoring "Sends metrics to"
+    }
+  }
+}
+```
+
+### 9. Complex Expression
+```dsl
+workspace {
+  model {
+    api = softwareSystem "API" "Backend"
+    
+    !elements "tag==Backend && element.type==SoftwareSystem" {
+      tags "Production"
+      url "https://monitoring.example.com"
+    }
+  }
+}
+```
+
+### 10. Multiple Extends for Same Element
+```dsl
+workspace {
+  model {
+    api = softwareSystem "API"
+    
+    !element api {
+      tags "Backend"
+    }
+    
+    !element api {
+      tags "Critical"
+    }
+    
+    !element api {
+      properties {
+        "Owner" "Platform"
+      }
+    }
+  }
+}
+```
+
+## Expression Patterns
+
+### Wildcard
+```dsl
+!elements "*" {
+  tags "Monitored"
+}
+```
+Matches: **All elements**
+
+### Tag Match
+```dsl
+!elements "tag==Backend" {
+  tags "Internal"
+}
+```
+Matches: Elements with tag "Backend"
+
+### Type Match
+```dsl
+!elements "element.type==Person" {
+  tags "Human"
+}
+```
+Matches: All Person elements
+
+Supported types:
+- `Person`
+- `SoftwareSystem`
+- `Container`
+- `Component`
+- `DeploymentNode`
+- `InfrastructureNode`
+
+### Name Match
+```dsl
+!elements "element.name==API" {
+  tags "Service"
+}
+```
+Matches: Elements named "API"
+
+### AND Conditions
+```dsl
+!elements "tag==Backend && element.type==SoftwareSystem" {
+  tags "Production"
+}
+```
+Matches: Software systems with tag "Backend"
+
+### OR Conditions (if supported)
+```dsl
+!elements "tag==Backend || tag==Frontend" {
+  tags "Monitored"
+}
+```
+
+## Permitted Children
+
+### !element (All element children)
+- ✅ `tags` - Add tags
+- ✅ `url` - Set URL
+- ✅ `properties { }` - Add custom properties
+- ✅ `perspectives { }` - Add perspectives
+- ✅ `description` - Set description
+- ✅ `technology` - Set technology
+- ✅ `this -> target "label"` - Add relationships
+
+### !elements (Restricted)
+- ✅ `tags` - Add tags
+- ✅ `url` - Set URL
+- ✅ `properties { }` - Add custom properties
+- ✅ `perspectives { }` - Add perspectives
+- ✅ `this -> target "label"` - Add relationships
+- ❌ `description` - Not permitted
+- ❌ `technology` - Not permitted
+
+## Common Patterns
+
+### Pattern 1: Tag All Backend Systems
+```dsl
+!elements "tag==Backend" {
+  tags "Internal"
+  properties {
+    "Environment" "Production"
+    "Region" "US-East-1"
+  }
+}
+```
+
+### Pattern 2: Add Monitoring to All Systems
+```dsl
+monitoring = softwareSystem "Monitoring"
+
+!elements "element.type==SoftwareSystem" {
+  this -> monitoring "Sends metrics to"
+}
+```
+
+### Pattern 3: Classify All People
+```dsl
+!elements "element.type==Person" {
+  tags "Human"
+  tags "Actor"
+  perspectives {
+    "Access" "Requires authentication"
+  }
+}
+```
+
+### Pattern 4: Production Tagging
+```dsl
+!elements "*" {
+  tags "Production"
+  properties {
+    "Environment" "prod"
+    "Support" "24x7"
+  }
+}
+```
+
+### Pattern 5: Team Ownership
+```dsl
+!elements "tag==Backend" {
+  properties {
+    "Team" "Platform"
+    "Owner" "platform@example.com"
+  }
+}
+
+!elements "tag==Frontend" {
+  properties {
+    "Team" "Web"
+    "Owner" "web@example.com"
+  }
+}
+```
+
+## Tips
+
+1. **Order Matters**: Define elements first, then extend them
+   ```dsl
+   api = softwareSystem "API"  // Define first
+   !element api { ... }         // Extend second
+   ```
+
+2. **Multiple Extends**: You can extend the same element multiple times
+   ```dsl
+   !element api { tags "Backend" }
+   !element api { tags "Critical" }
+   ```
+
+3. **"this" Keyword**: Use `this` to refer to the element being extended
+   ```dsl
+   !element api {
+     this -> db "Reads from"
+   }
+   ```
+
+4. **Wildcards**: Use `"*"` to match all elements
+   ```dsl
+   !elements "*" {
+     tags "Monitored"
+   }
+   ```
+
+5. **Complex Expressions**: Combine multiple conditions
+   ```dsl
+   !elements "tag==Backend && element.type==SoftwareSystem" {
+     tags "Service"
+   }
+   ```
+
+6. **Empty Blocks**: Empty blocks are valid (though not useful)
+   ```dsl
+   !element api {
+   }
+   ```
+
+## Testing
+
+Run extend element tests:
+```bash
+cd frontend
+npm test extend-element.test.ts
+```
+
+Expected: **23/23 tests passing** ✅
+
+## Real-World Example
+
+```dsl
+workspace "Production System" {
+  model {
+    // Define elements
+    user = person "User"
+    admin = person "Admin"
+    
+    api = softwareSystem "API" "Backend"
+    web = softwareSystem "Web" "Frontend"
+    db = softwareSystem "Database" "Backend"
+    cache = softwareSystem "Cache" "Backend"
+    monitoring = softwareSystem "Monitoring"
+    
+    // Classify all humans
+    !elements "element.type==Person" {
+      tags "Human"
+      tags "Actor"
+    }
+    
+    // Tag backend systems
+    !elements "tag==Backend" {
+      tags "Internal"
+      properties {
+        "Environment" "Production"
+        "Region" "US-East-1"
+        "Team" "Platform"
+      }
+    }
+    
+    // Tag frontend systems
+    !elements "tag==Frontend" {
+      tags "Public"
+      properties {
+        "Environment" "Production"
+        "CDN" "CloudFlare"
+        "Team" "Web"
+      }
+    }
+    
+    // Add monitoring to all systems
+    !elements "element.type==SoftwareSystem" {
+      this -> monitoring "Sends metrics to"
+    }
+    
+    // Add specific properties to API
+    !element api {
+      url "https://api.example.com"
+      perspectives {
+        "Security" "OAuth 2.0 + JWT"
+        "Performance" "Target: <100ms p95"
+        "Scalability" "Auto-scaling 2-20 instances"
+      }
+    }
+    
+    // Tag critical systems
+    !element api {
+      tags "Critical"
+    }
+    !element db {
+      tags "Critical"
+    }
+    
+    // Regular relationships
+    user -> web "Uses"
+    web -> api "Calls"
+    api -> db "Reads/Writes"
+    api -> cache "Caches in"
+  }
+  
+  views {
+    systemLandscape {
+      include *
+      autoLayout lr
+    }
+  }
+}
+```
+
+## Differences from Regular Element Definition
+
+| Feature | Regular Element | !element Extension |
+|---------|----------------|-------------------|
+| Defines element | ✅ Yes | ❌ No (must exist) |
+| Adds to existing | ❌ No | ✅ Yes |
+| Requires identifier | ✅ Yes | ✅ Yes |
+| Can bulk apply | ❌ No | ✅ Yes (!elements) |
+| Can repeat | ❌ No | ✅ Yes |
+
+## Common Errors
+
+### Error 1: Element doesn't exist
+```dsl
+!element nonexistent {  // ❌ Error if 'nonexistent' not defined
+  tags "Test"
+}
+```
+**Fix**: Define element first
+```dsl
+api = softwareSystem "API"
+!element api {
+  tags "Test"
+}
+```
+
+### Error 2: Wrong child in !elements
+```dsl
+!elements "*" {
+  description "Test"  // ❌ Not permitted in !elements
+}
+```
+**Fix**: Use !element for description
+```dsl
+!element api {
+  description "Test"  // ✅ OK in !element
+}
+```
+
+### Error 3: Missing quotes in expression
+```dsl
+!elements tag==Backend {  // ❌ Expression must be quoted
+  tags "Internal"
+}
+```
+**Fix**: Quote the expression
+```dsl
+!elements "tag==Backend" {
+  tags "Internal"
+}
+```
+
+## Resources
+
+- Structurizr DSL Documentation: https://docs.structurizr.com/dsl/language
+- [DSL Support Matrix](/reference/dsl-support) — what ArchTect supports from the Structurizr DSL spec
