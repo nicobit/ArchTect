@@ -17,6 +17,11 @@
 	--sl-color-bg: #0b0b0c;
 	--sl-color-bg-nav: #0b0b0c;
 	--sl-color-bg-sidebar: #0b0b0c;
+	--landing-bg-base: #05030a;
+	--landing-bg-glow: hsla(272, 78%, 30%, 0.4);
+	--landing-dot: hsla(277, 92%, 72%, 0.24);
+	--landing-plus: hsla(275, 100%, 76%, 0.64);
+	--landing-plus-glow: hsla(277, 100%, 67%, 0.28);
 }
 
 :root[data-theme='light'] {
@@ -26,6 +31,11 @@
 	--sl-color-bg: #ffffff;
 	--sl-color-bg-nav: #ffffff;
 	--sl-color-bg-sidebar: #ffffff;
+	--landing-bg-base: #fbfaff;
+	--landing-bg-glow: hsla(275, 84%, 83%, 0.42);
+	--landing-dot: hsla(274, 63%, 57%, 0.2);
+	--landing-plus: hsla(273, 72%, 48%, 0.42);
+	--landing-plus-glow: hsla(275, 82%, 68%, 0.18);
 }
 
 /* Animate the collapse/expand of the left sidebar: the elements whose size or
@@ -128,6 +138,68 @@ html::-webkit-scrollbar-thumb {
    breathing room than the 45rem prose cap used on regular doc pages. */
 [data-has-hero] .sl-container {
 	max-width: 78rem;
+}
+
+[data-has-hero] {
+	position: relative;
+	isolation: isolate;
+	background:
+		radial-gradient(ellipse 70% 48% at 50% 12%, var(--landing-bg-glow), transparent 72%),
+		var(--landing-bg-base);
+	overflow-x: clip;
+	overflow-y: auto;
+}
+
+html[data-has-hero] body {
+	background: transparent;
+}
+
+[data-has-hero]::before,
+[data-has-hero]::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+[data-has-hero]::before {
+	background-image: radial-gradient(circle, var(--landing-dot) 1px, transparent 1.5px);
+	background-size: 1.375rem 1.375rem;
+	mask-image: linear-gradient(to bottom, black 0%, rgb(0 0 0 / 0.76) 42%, transparent 88%);
+	opacity: 0.9;
+	z-index: 0;
+}
+
+[data-has-hero]::after {
+	background-image:
+		linear-gradient(to bottom, transparent calc(50% - 1px), var(--landing-plus) calc(50% - 1px), var(--landing-plus) calc(50% + 1px), transparent calc(50% + 1px)),
+		linear-gradient(90deg, transparent calc(50% - 1px), var(--landing-plus) calc(50% - 1px), var(--landing-plus) calc(50% + 1px), transparent calc(50% + 1px));
+	background-size: 2.75rem 2.75rem;
+	background-position: center;
+	background-repeat: repeat;
+	filter: drop-shadow(0 0 0.45rem var(--landing-plus-glow));
+	mask-image: radial-gradient(ellipse 42rem 24rem at 50% 14%, black, transparent 74%);
+	opacity: 0.9;
+	z-index: 0;
+}
+
+[data-has-hero] > * {
+	position: relative;
+	z-index: 1;
+}
+
+@media (max-width: 50rem) {
+	[data-has-hero]::after {
+		background-size: 2.25rem 2.25rem;
+		mask-image: radial-gradient(ellipse 22rem 25rem at 50% 13%, black, transparent 76%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-has-hero]::before,
+	[data-has-hero]::after {
+		animation: none;
+	}
 }
 
 /* Starlight's default hero grid reserves a 4fr column for an image even when
